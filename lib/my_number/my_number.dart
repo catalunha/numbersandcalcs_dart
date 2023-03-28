@@ -27,8 +27,8 @@ class MyNumber {
   }) {
     simplifyFraction();
     decimalToFraction();
-    calculeInDouble();
     setType();
+    calculeInDouble();
   }
   void simplifyFraction() {
     _fractionNumReduced = fractionNum;
@@ -57,7 +57,12 @@ class MyNumber {
 
   void calculeInDouble() {
     if (type == MyNumberType.integer) {
-      _inDouble = (signalValue * _integerReduced!) as double?;
+      try {
+        _inDouble =
+            integer == null ? null : (signalValue * integer!).toDouble();
+      } catch (e) {
+        print('Erro em integer');
+      }
     }
     if (type == MyNumberType.decimal) {
       _inDouble = (signalValue *
@@ -296,6 +301,7 @@ class MyNumber {
         fractionNum: fnum.abs(), fractionDen: fden, signal: signal);
 
     output.simplifyFraction();
+    output.calculeInDouble();
     output.setType();
     return output;
   }
@@ -323,6 +329,7 @@ class MyNumber {
         signal: signal);
 
     output.simplifyFraction();
+    output.calculeInDouble();
     output.setType();
     return output;
   }
@@ -350,6 +357,7 @@ class MyNumber {
         signal: signal);
 
     output.simplifyFraction();
+    output.calculeInDouble();
     output.setType();
     return output;
   }

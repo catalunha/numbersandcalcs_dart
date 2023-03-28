@@ -12,4 +12,5 @@ void main(List<String> arguments) {
   exampleDiv();
   // generatingNumbers();
   exampleDecimal();
+  // isolate();
 }
