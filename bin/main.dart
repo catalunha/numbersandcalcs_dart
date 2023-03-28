@@ -1,6 +1,12 @@
-import 'package:numbersandcalcs_dart/my_number/example.dart';
+import 'package:numbersandcalcs_dart/my_number/example_div.dart';
+import 'package:numbersandcalcs_dart/my_number/example_mul.dart';
+import 'package:numbersandcalcs_dart/my_number/example_sub.dart';
+import 'package:numbersandcalcs_dart/my_number/example_sum.dart';
 
 void main(List<String> arguments) {
   // exampleGCFandLCM();
-  exampleMyNumber();
+  exampleSum();
+  exampleSub();
+  exampleMul();
+  exampleDiv();
 }
