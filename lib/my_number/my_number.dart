@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import 'package:numbersandcalcs_dart/gcf_lcm/alg_gcf_lcm.dart';
+import '../gcf_lcm/alg_gcf_lcm.dart';
 
 enum MyNumberType { integer, decimal, fraction, mixed }
 
-enum MyNumberSignal { positive, negative, aleatory }
+enum MyNumberSignal { positive, negative }
 
 class MyNumber {
   final MyNumberSignal signal;
@@ -15,6 +15,7 @@ class MyNumber {
   int? _integerReduced;
   int? _fractionNumReduced;
   int? _fractionDenReduced;
+  double? _inDouble;
   MyNumberType? _type;
   MyNumber({
     // this.type = MyNumberType.integer,
@@ -25,12 +26,56 @@ class MyNumber {
     this.fractionDen,
   }) {
     simplifyFraction();
+    decimalToFraction();
+    calculeInDouble();
     setType();
   }
+  void simplifyFraction() {
+    _fractionNumReduced = fractionNum;
+    _integerReduced = integer;
+    if (fractionNum != null && fractionDen != null) {
+      if (fractionNum! > fractionDen!) {
+        _fractionNumReduced = fractionNum! % fractionDen!;
+        _integerReduced = (integer ?? 0) + fractionNum! ~/ fractionDen!;
+      }
+      int lcm = algLCM(_fractionNumReduced!, fractionDen!);
+      _fractionNumReduced = _fractionNumReduced! ~/ lcm;
+      _fractionDenReduced = fractionDen! ~/ lcm;
+    }
+  }
+
+  void decimalToFraction() {
+    if (decimal != null && (fractionNum != null || fractionDen != null)) {
+      throw Exception('A parte decimal é numero ou fração ?');
+    }
+    if (decimal != null) {
+      int lengthDecimal = decimal.toString().length;
+      _fractionNumReduced = decimal;
+      _fractionDenReduced = pow(10, lengthDecimal).toInt();
+    }
+  }
+
+  void calculeInDouble() {
+    if (type == MyNumberType.integer) {
+      _inDouble = (signalValue * _integerReduced!) as double?;
+    }
+    if (type == MyNumberType.decimal) {
+      _inDouble = (signalValue *
+          (integer! + _fractionNumReduced! / _fractionDenReduced!));
+    }
+    if (type == MyNumberType.fraction) {
+      _inDouble = signalValue * _fractionNumReduced! / _fractionDenReduced!;
+    }
+    if (type == MyNumberType.mixed) {
+      _inDouble = (signalValue *
+          (_integerReduced! + _fractionNumReduced! / _fractionDenReduced!));
+    }
+  }
+
   void setType() {
-    if (decimal == null && fractionNum == null && _fractionDenReduced == null) {
+    if (decimal == null && fractionNum == null && fractionDen == null) {
       _type = MyNumberType.integer;
-    } else if (fractionNum == null && _fractionDenReduced == null) {
+    } else if (fractionNum == null && fractionDen == null) {
       _type = MyNumberType.decimal;
     } else if (integer == null && decimal == null && integerReduced == null) {
       _type = MyNumberType.fraction;
@@ -59,20 +104,6 @@ class MyNumber {
     }
   }
 
-  void simplifyFraction() {
-    _fractionNumReduced = fractionNum;
-    _integerReduced = integer;
-    if (fractionNum != null && fractionDen != null) {
-      if (fractionNum! > fractionDen!) {
-        _fractionNumReduced = fractionNum! % fractionDen!;
-        _integerReduced = (integer ?? 0) + fractionNum! ~/ fractionDen!;
-      }
-      int lcm = algLCM(_fractionNumReduced!, fractionDen!);
-      _fractionNumReduced = _fractionNumReduced! ~/ lcm;
-      _fractionDenReduced = fractionDen! ~/ lcm;
-    }
-  }
-
   int? get fractionNumReduced {
     return _fractionNumReduced;
   }
@@ -85,8 +116,8 @@ class MyNumber {
     return _integerReduced;
   }
 
-  MyNumberType get type {
-    return _type!;
+  MyNumberType? get type {
+    return _type;
   }
 
   String toStringInteger() {
@@ -172,7 +203,8 @@ class MyNumber {
         other.fractionDen == fractionDen &&
         other._integerReduced == _integerReduced &&
         other._fractionNumReduced == _fractionNumReduced &&
-        other._fractionDenReduced == _fractionDenReduced;
+        other._fractionDenReduced == _fractionDenReduced &&
+        other._inDouble == _inDouble;
   }
 
   @override
@@ -184,12 +216,13 @@ class MyNumber {
         fractionDen.hashCode ^
         _integerReduced.hashCode ^
         _fractionNumReduced.hashCode ^
-        _fractionDenReduced.hashCode;
+        _fractionDenReduced.hashCode ^
+        _inDouble.hashCode;
   }
 
   @override
   String toString() {
-    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced)';
+    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _inDouble: $_inDouble, type: $type)';
   }
 
   MyNumber operator +(MyNumber num2) {
@@ -225,6 +258,7 @@ class MyNumber {
         fractionNum: fnum.abs(), fractionDen: fden, signal: signal);
 
     output.simplifyFraction();
+    output.calculeInDouble();
     output.setType();
     return output;
   }

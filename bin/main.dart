@@ -1,3 +1,4 @@
+import 'package:numbersandcalcs_dart/my_number/example_decimal.dart';
 import 'package:numbersandcalcs_dart/my_number/example_div.dart';
 import 'package:numbersandcalcs_dart/my_number/example_mul.dart';
 import 'package:numbersandcalcs_dart/my_number/example_sub.dart';
@@ -9,4 +10,6 @@ void main(List<String> arguments) {
   exampleSub();
   exampleMul();
   exampleDiv();
+  // generatingNumbers();
+  exampleDecimal();
 }

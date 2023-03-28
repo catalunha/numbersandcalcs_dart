@@ -13,6 +13,9 @@ void exampleMul() {
       integer: 3,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -29,6 +32,9 @@ void exampleMul() {
       integer: 3,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -45,6 +51,9 @@ void exampleMul() {
       integer: 3,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -63,6 +72,9 @@ void exampleMul() {
       fractionDen: 4,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -82,6 +94,9 @@ void exampleMul() {
       fractionDen: 4,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -101,6 +116,9 @@ void exampleMul() {
       fractionDen: 4,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -121,6 +139,9 @@ void exampleMul() {
       integer: 4,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -142,6 +163,9 @@ void exampleMul() {
       fractionDen: 3,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -164,6 +188,9 @@ void exampleMul() {
       fractionDen: 6,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');
@@ -186,6 +213,9 @@ void exampleMul() {
       fractionDen: 9,
     );
     MyNumber mul = num1 * num2;
+    print(num1);
+    print(num2);
+    print(mul);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} mul: ${mul.toStringType()}');

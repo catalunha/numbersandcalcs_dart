@@ -13,6 +13,9 @@ void exampleDiv() {
       integer: 3,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -30,6 +33,9 @@ void exampleDiv() {
       integer: 3,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -47,6 +53,9 @@ void exampleDiv() {
       integer: 3,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -66,6 +75,9 @@ void exampleDiv() {
       fractionDen: 4,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -85,6 +97,9 @@ void exampleDiv() {
       fractionDen: 4,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -104,6 +119,9 @@ void exampleDiv() {
       fractionDen: 4,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -124,6 +142,9 @@ void exampleDiv() {
       integer: 4,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -144,6 +165,9 @@ void exampleDiv() {
       fractionDen: 3,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -166,6 +190,9 @@ void exampleDiv() {
       fractionDen: 6,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -187,6 +214,9 @@ void exampleDiv() {
       fractionDen: 9,
     );
     MyNumber div = num1 / num2;
+    print(num1);
+    print(num2);
+    print(div);
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
     assert(div.signal == MyNumberSignal.positive);

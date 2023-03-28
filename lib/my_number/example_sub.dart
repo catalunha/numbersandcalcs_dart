@@ -13,6 +13,9 @@ void exampleSub() {
       integer: 3,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -29,6 +32,9 @@ void exampleSub() {
       integer: 3,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -45,6 +51,9 @@ void exampleSub() {
       integer: 3,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -63,6 +72,9 @@ void exampleSub() {
       fractionDen: 4,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -82,6 +94,9 @@ void exampleSub() {
       fractionDen: 4,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -102,6 +117,9 @@ void exampleSub() {
       fractionDen: 4,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -123,6 +141,9 @@ void exampleSub() {
       integer: 4,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -144,6 +165,9 @@ void exampleSub() {
       fractionDen: 3,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -166,6 +190,9 @@ void exampleSub() {
       fractionDen: 6,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
@@ -188,6 +215,9 @@ void exampleSub() {
       fractionDen: 9,
     );
     MyNumber sub = num1 - num2;
+    print(num1);
+    print(num2);
+    print(sub);
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sub: ${sub.toStringType()}');
