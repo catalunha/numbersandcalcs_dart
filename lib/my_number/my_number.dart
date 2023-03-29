@@ -73,15 +73,16 @@ class MyNumber {
   void calculeInDouble() {
     if (type == MyNumberType.integer) {
       try {
-        _inDouble =
-            integer == null ? null : (signalValue * integer!).toDouble();
+        _inDouble = _integerReduced == null
+            ? null
+            : (signalValue * _integerReduced!).toDouble();
       } catch (e) {
         print('Erro em integer');
       }
     }
     if (type == MyNumberType.decimal) {
       _inDouble = (signalValue *
-          (integer! + _fractionNumReduced! / _fractionDenReduced!));
+          (_integerReduced! + _fractionNumReduced! / _fractionDenReduced!));
     }
     if (type == MyNumberType.fraction) {
       _inDouble = signalValue * _fractionNumReduced! / _fractionDenReduced!;
