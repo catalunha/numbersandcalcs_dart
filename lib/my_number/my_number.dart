@@ -26,15 +26,16 @@ class MyNumber {
     this.fractionDen,
   }) {
     simplifyFraction();
-    decimalToFraction();
+    // decimalToFraction();
     setType();
     calculeInDouble();
   }
   void simplifyFraction() {
     //print('etapa0: ${toString()}');
     _integerReduced = integer;
-    _fractionNumReduced = fractionNum;
-    _fractionDenReduced = fractionDen;
+    decimalToFraction();
+    _fractionNumReduced = _fractionNumReduced ?? fractionNum;
+    _fractionDenReduced = _fractionDenReduced ?? fractionDen;
     //print('etapa1: ${toString()}');
     if (fractionNum != null && fractionDen != null) {
       int lcm = algLCM(_fractionNumReduced!, _fractionDenReduced!);
