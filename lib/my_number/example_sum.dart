@@ -2,6 +2,7 @@ import 'package:numbersandcalcs_dart/my_number/my_number.dart';
 
 void exampleSum() {
   print('exampleSum');
+  bool seeDetails = false;
   {
     MyNumber num1 = MyNumber(
       signal: MyNumberSignal.positive,
@@ -12,9 +13,11 @@ void exampleSum() {
       integer: 3,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -31,9 +34,11 @@ void exampleSum() {
       integer: 3,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
     assert(sum.signal == MyNumberSignal.positive);
@@ -49,9 +54,11 @@ void exampleSum() {
       integer: 3,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -70,9 +77,11 @@ void exampleSum() {
       fractionDen: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -93,9 +102,11 @@ void exampleSum() {
       fractionDen: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -115,9 +126,11 @@ void exampleSum() {
       fractionDen: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -137,12 +150,12 @@ void exampleSum() {
       integer: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
+
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
     assert(sum.signal == MyNumberSignal.positive);
@@ -162,9 +175,11 @@ void exampleSum() {
       fractionDen: 3,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -187,9 +202,11 @@ void exampleSum() {
       fractionDen: 6,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -212,9 +229,11 @@ void exampleSum() {
       fractionDen: 9,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');

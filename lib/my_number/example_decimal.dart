@@ -1,7 +1,8 @@
 import 'my_number.dart';
 
 void exampleDecimal() {
-  print('+-*/+-*/+-*/ exampleDecimal');
+  print('exampleDecimal');
+  bool seeDetails = false;
 
   {
     MyNumber num1 = MyNumber(
@@ -15,9 +16,11 @@ void exampleDecimal() {
       decimal: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()} dec:');
@@ -36,9 +39,11 @@ void exampleDecimal() {
       decimal: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
     //assert(sum.signal == MyNumberSignal.positive);
@@ -56,9 +61,11 @@ void exampleDecimal() {
       decimal: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -77,9 +84,11 @@ void exampleDecimal() {
       fractionDen: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -100,9 +109,11 @@ void exampleDecimal() {
       fractionDen: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -122,9 +133,11 @@ void exampleDecimal() {
       fractionDen: 4,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -145,9 +158,11 @@ void exampleDecimal() {
       decimal: 5,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -169,9 +184,11 @@ void exampleDecimal() {
       fractionDen: 3,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -194,9 +211,11 @@ void exampleDecimal() {
       fractionDen: 6,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');
@@ -219,9 +238,11 @@ void exampleDecimal() {
       fractionDen: 9,
     );
     MyNumber sum = num1 + num2;
-    print(num1);
-    print(num2);
-    print(sum);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sum: ${sum.toStringType()}');

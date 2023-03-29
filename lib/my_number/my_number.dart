@@ -31,16 +31,30 @@ class MyNumber {
     calculeInDouble();
   }
   void simplifyFraction() {
-    _fractionNumReduced = fractionNum;
+    //print('etapa0: ${toString()}');
     _integerReduced = integer;
+    _fractionNumReduced = fractionNum;
+    _fractionDenReduced = fractionDen;
+    //print('etapa1: ${toString()}');
     if (fractionNum != null && fractionDen != null) {
-      if (fractionNum! > fractionDen!) {
-        _fractionNumReduced = fractionNum! % fractionDen!;
-        _integerReduced = (integer ?? 0) + fractionNum! ~/ fractionDen!;
-      }
-      int lcm = algLCM(_fractionNumReduced!, fractionDen!);
+      int lcm = algLCM(_fractionNumReduced!, _fractionDenReduced!);
+      //print('lcm: $lcm');
       _fractionNumReduced = _fractionNumReduced! ~/ lcm;
       _fractionDenReduced = fractionDen! ~/ lcm;
+      //print('etapa2: ${toString()}');
+
+      if (_fractionNumReduced! > _fractionDenReduced!) {
+        _integerReduced =
+            (integer ?? 0) + _fractionNumReduced! ~/ _fractionDenReduced!;
+        _fractionNumReduced = _fractionNumReduced! % _fractionDenReduced!;
+      }
+      //print('etapa3: ${toString()}');
+
+      if (_fractionNumReduced == 0 && _fractionDenReduced == 1) {
+        _fractionNumReduced = null;
+        _fractionDenReduced = null;
+      }
+      //print('etapa4: ${toString()}');
     }
   }
 
@@ -78,11 +92,15 @@ class MyNumber {
   }
 
   void setType() {
-    if (decimal == null && fractionNum == null && fractionDen == null) {
+    if (decimal == null &&
+        _fractionNumReduced == null &&
+        _fractionDenReduced == null) {
       _type = MyNumberType.integer;
-    } else if (fractionNum == null && fractionDen == null) {
+    } else if (_fractionNumReduced == null && _fractionDenReduced == null) {
       _type = MyNumberType.decimal;
-    } else if (integer == null && decimal == null && integerReduced == null) {
+    } else if (_integerReduced == null &&
+        _fractionNumReduced != null &&
+        _fractionDenReduced != null) {
       _type = MyNumberType.fraction;
     } else {
       _type = MyNumberType.mixed;
@@ -231,6 +249,7 @@ class MyNumber {
   }
 
   MyNumber operator +(MyNumber num2) {
+    //print('+++ sum +++');
     MyNumber output = MyNumber();
     if (type == MyNumberType.integer && num2.type == MyNumberType.integer) {
       int? integer = (integerReduced == null) && num2.integerReduced == null
@@ -244,6 +263,7 @@ class MyNumber {
       output.setType();
       return output;
     }
+    //print('+++ sum 1 +++');
 
     int f1num = (_fractionDenReduced ?? 1) * (_integerReduced ?? 0) +
         (fractionNumReduced ?? 0);
@@ -259,12 +279,15 @@ class MyNumber {
     int fden = gcf;
     MyNumberSignal signal =
         fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    //print('+++ sum 2 +++');
+
     output = output.copyWith(
         fractionNum: fnum.abs(), fractionDen: fden, signal: signal);
+    //print('+++ sum 3 +++');
 
-    output.simplifyFraction();
-    output.calculeInDouble();
-    output.setType();
+    // output.simplifyFraction();
+    // output.calculeInDouble();
+    // output.setType();
     return output;
   }
 
@@ -279,7 +302,6 @@ class MyNumber {
           ? MyNumberSignal.negative
           : MyNumberSignal.positive;
       output = output.copyWith(integer: integer?.abs(), signal: signal);
-      output.setType();
       return output;
     }
 
@@ -299,10 +321,6 @@ class MyNumber {
         fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
     output = output.copyWith(
         fractionNum: fnum.abs(), fractionDen: fden, signal: signal);
-
-    output.simplifyFraction();
-    output.calculeInDouble();
-    output.setType();
     return output;
   }
 
@@ -327,10 +345,6 @@ class MyNumber {
         fractionNum: fden == 1 ? null : fnum,
         fractionDen: fden == 1 ? null : fden,
         signal: signal);
-
-    output.simplifyFraction();
-    output.calculeInDouble();
-    output.setType();
     return output;
   }
 
@@ -355,10 +369,77 @@ class MyNumber {
         fractionNum: fden == 1 ? null : fnum,
         fractionDen: fden == 1 ? null : fden,
         signal: signal);
+    return output;
+  }
 
-    output.simplifyFraction();
-    output.calculeInDouble();
-    output.setType();
+  MyNumber operator ^(MyNumber num2) {
+    if (num2.type != MyNumberType.integer &&
+        num2.signal != MyNumberSignal.positive) {
+      throw Exception('Expoente precisa ser inteiro e positivo');
+    }
+    MyNumber output = MyNumber();
+    if (type == MyNumberType.integer) {
+      output = output.copyWith(
+          integer: pow(integerReduced!, num2.integerReduced!).toInt());
+      return output;
+    }
+    int f1num = (fractionDenReduced ?? 1) * (integerReduced ?? 0) +
+        (fractionNumReduced ?? 0);
+    int f1den = fractionDenReduced ?? 1;
+
+    int fnum = pow(signalValue * f1num, num2.integerReduced!).toInt();
+    int fden = pow(f1den, num2.integerReduced!).toInt();
+    MyNumberSignal signal =
+        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    fnum = fnum.abs();
+    output = output.copyWith(
+      signal: signal,
+      fractionNum: fnum,
+      fractionDen: fden,
+    );
+    return output;
+  }
+
+  MyNumber operator &(MyNumber num2) {
+    if (num2.type != MyNumberType.integer &&
+        num2.signal != MyNumberSignal.positive) {
+      throw Exception('Raiz precisa ser inteiro e positivo');
+    }
+    MyNumber output = MyNumber();
+
+    if (type == MyNumberType.integer) {
+      num temp = pow(integerReduced!, 1 / num2.integerReduced!);
+      if (temp % 1 != 0) {
+        throw Exception('Erro: A raiz quadrada é decimal');
+      }
+      output = output.copyWith(integer: (temp % 1 == 0) ? temp.toInt() : null);
+      return output;
+    }
+    int f1num = (fractionDenReduced ?? 1) * (integerReduced ?? 0) +
+        (fractionNumReduced ?? 0);
+    //print('f1num: $f1num');
+    int f1den = fractionDenReduced ?? 1;
+    //print('f1den: $f1den');
+
+    num fnum = pow(signalValue * f1num, 1 / num2.integerReduced!);
+    //print('fnum: $fnum');
+    if (fnum % 1 != 0) {
+      throw Exception('Erro: A raiz quadrada é decimal');
+    }
+    num fden = pow(f1den, 1 / num2.integerReduced!);
+    //print('fden: $fden');
+    if (fden % 1 != 0) {
+      throw Exception('Erro: A raiz quadrada é decimal');
+    }
+    MyNumberSignal signal =
+        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    fnum = fnum.abs();
+    //print('output1: $output');
+    output = output.copyWith(
+      signal: signal,
+      fractionNum: (fnum % 1 == 0) ? fnum.toInt() : null,
+      fractionDen: (fden % 1 == 0) ? fden.toInt() : null,
+    );
     return output;
   }
 }

@@ -2,10 +2,32 @@ import 'package:numbersandcalcs_dart/my_number/my_number.dart';
 
 void exampleDiv() {
   print('exampleDiv');
+  bool seeDetails = false;
 
   {
     MyNumber num1 = MyNumber(
       signal: MyNumberSignal.positive,
+      integer: 6,
+    );
+    MyNumber num2 = MyNumber(
+      signal: MyNumberSignal.positive,
+      integer: 3,
+    );
+    MyNumber div = num1 / num2;
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
+
+    print(
+        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
+    assert(div.signal == MyNumberSignal.positive);
+    assert(div.integerReduced == 2);
+  }
+  {
+    MyNumber num1 = MyNumber(
+      signal: MyNumberSignal.negative,
       integer: 2,
     );
     MyNumber num2 = MyNumber(
@@ -13,9 +35,57 @@ void exampleDiv() {
       integer: 3,
     );
     MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
+
+    print(
+        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
+    assert(div.signal == MyNumberSignal.negative);
+    assert(div.fractionNumReduced == 2);
+    assert(div.fractionDenReduced == 3);
+  }
+  {
+    MyNumber num1 = MyNumber(
+      signal: MyNumberSignal.positive,
+      integer: 2,
+    );
+    MyNumber num2 = MyNumber(
+      signal: MyNumberSignal.negative,
+      integer: 3,
+    );
+    MyNumber div = num1 / num2;
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
+
+    print(
+        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
+    assert(div.signal == MyNumberSignal.negative);
+    assert(div.fractionNumReduced == 2);
+    assert(div.fractionDenReduced == 3);
+  }
+  {
+    MyNumber num1 = MyNumber(
+      signal: MyNumberSignal.positive,
+      fractionNum: 1,
+      fractionDen: 2,
+    );
+    MyNumber num2 = MyNumber(
+      signal: MyNumberSignal.positive,
+      fractionNum: 3,
+      fractionDen: 4,
+    );
+    MyNumber div = num1 / num2;
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -26,46 +96,6 @@ void exampleDiv() {
   {
     MyNumber num1 = MyNumber(
       signal: MyNumberSignal.negative,
-      integer: 2,
-    );
-    MyNumber num2 = MyNumber(
-      signal: MyNumberSignal.positive,
-      integer: 3,
-    );
-    MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
-
-    print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.negative);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
-  }
-  {
-    MyNumber num1 = MyNumber(
-      signal: MyNumberSignal.positive,
-      integer: 2,
-    );
-    MyNumber num2 = MyNumber(
-      signal: MyNumberSignal.negative,
-      integer: 3,
-    );
-    MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
-
-    print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.negative);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
-  }
-  {
-    MyNumber num1 = MyNumber(
-      signal: MyNumberSignal.positive,
       fractionNum: 1,
       fractionDen: 2,
     );
@@ -75,31 +105,11 @@ void exampleDiv() {
       fractionDen: 4,
     );
     MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
-
-    print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.positive);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
-  }
-  {
-    MyNumber num1 = MyNumber(
-      signal: MyNumberSignal.negative,
-      fractionNum: 1,
-      fractionDen: 2,
-    );
-    MyNumber num2 = MyNumber(
-      signal: MyNumberSignal.positive,
-      fractionNum: 3,
-      fractionDen: 4,
-    );
-    MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -119,9 +129,11 @@ void exampleDiv() {
       fractionDen: 4,
     );
     MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -142,9 +154,11 @@ void exampleDiv() {
       integer: 4,
     );
     MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -165,9 +179,11 @@ void exampleDiv() {
       fractionDen: 3,
     );
     MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -190,9 +206,11 @@ void exampleDiv() {
       fractionDen: 6,
     );
     MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
 
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
@@ -214,9 +232,11 @@ void exampleDiv() {
       fractionDen: 9,
     );
     MyNumber div = num1 / num2;
-    print(num1);
-    print(num2);
-    print(div);
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(div);
+    }
     print(
         'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
     assert(div.signal == MyNumberSignal.positive);
