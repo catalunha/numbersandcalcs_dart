@@ -25,12 +25,12 @@ class MyNumber {
     this.fractionNum,
     this.fractionDen,
   }) {
-    simplifyFraction();
+    simplifyValues();
     // decimalToFraction();
     setType();
     calculeInDouble();
   }
-  void simplifyFraction() {
+  void simplifyValues() {
     //print('etapa0: ${toString()}');
     _integerReduced = integer;
     decimalToFraction();
@@ -245,14 +245,17 @@ class MyNumber {
     //print('+++ sum +++');
     MyNumber output = MyNumber();
     if (type == MyNumberType.integer && num2.type == MyNumberType.integer) {
-      int? integer = (integerReduced == null) && num2.integerReduced == null
+      int? integerTemp = (integerReduced == null) && num2.integerReduced == null
           ? null
           : signalValue * (integerReduced ?? 0) +
               num2.signalValue * (num2.integerReduced ?? 0);
-      MyNumberSignal signal = integer != null && integer < 0
+      MyNumberSignal signal = integerTemp != null && integerTemp < 0
           ? MyNumberSignal.negative
           : MyNumberSignal.positive;
-      output = output.copyWith(integer: integer?.abs(), signal: signal);
+      output = output.copyWith(
+        integer: integerTemp?.abs(),
+        signal: signal,
+      );
       return output;
     }
     //print('+++ sum 1 +++');
@@ -274,7 +277,10 @@ class MyNumber {
     //print('+++ sum 2 +++');
 
     output = output.copyWith(
-        fractionNum: fnum.abs(), fractionDen: fden, signal: signal);
+      fractionNum: fnum.abs(),
+      fractionDen: fden,
+      signal: signal,
+    );
     //print('+++ sum 3 +++');
 
     // output.simplifyFraction();
@@ -286,14 +292,17 @@ class MyNumber {
   MyNumber operator -(MyNumber num2) {
     MyNumber output = MyNumber();
     if (type == MyNumberType.integer && num2.type == MyNumberType.integer) {
-      int? integer = (integerReduced == null) && num2.integerReduced == null
+      int? integerTemp = (integerReduced == null) && num2.integerReduced == null
           ? null
           : signalValue * (integerReduced ?? 0) -
               num2.signalValue * (num2.integerReduced ?? 0);
-      MyNumberSignal signal = integer != null && integer < 0
+      MyNumberSignal signal = integerTemp != null && integerTemp < 0
           ? MyNumberSignal.negative
           : MyNumberSignal.positive;
-      output = output.copyWith(integer: integer?.abs(), signal: signal);
+      output = output.copyWith(
+        integer: integerTemp?.abs(),
+        signal: signal,
+      );
       return output;
     }
 
@@ -312,7 +321,10 @@ class MyNumber {
     MyNumberSignal signal =
         fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
     output = output.copyWith(
-        fractionNum: fnum.abs(), fractionDen: fden, signal: signal);
+      fractionNum: fnum.abs(),
+      fractionDen: fden,
+      signal: signal,
+    );
     return output;
   }
 
@@ -333,10 +345,11 @@ class MyNumber {
         fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
     fnum = fnum.abs();
     output = output.copyWith(
-        integer: fden == 1 ? fnum : null,
-        fractionNum: fden == 1 ? null : fnum,
-        fractionDen: fden == 1 ? null : fden,
-        signal: signal);
+      integer: fden == 1 ? fnum : null,
+      fractionNum: fden == 1 ? null : fnum,
+      fractionDen: fden == 1 ? null : fden,
+      signal: signal,
+    );
     return output;
   }
 
@@ -357,10 +370,11 @@ class MyNumber {
         fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
     fnum = fnum.abs();
     output = output.copyWith(
-        integer: fden == 1 ? fnum : null,
-        fractionNum: fden == 1 ? null : fnum,
-        fractionDen: fden == 1 ? null : fden,
-        signal: signal);
+      integer: fden == 1 ? fnum : null,
+      fractionNum: fden == 1 ? null : fnum,
+      fractionDen: fden == 1 ? null : fden,
+      signal: signal,
+    );
     return output;
   }
 
