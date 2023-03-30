@@ -37,16 +37,16 @@ class MyNumber {
     _fractionNumReduced = _fractionNumReduced ?? fractionNum;
     _fractionDenReduced = _fractionDenReduced ?? fractionDen;
     //print('etapa1: ${toString()}');
-    if (fractionNum != null && fractionDen != null) {
+    if (_fractionNumReduced != null && _fractionDenReduced != null) {
       int lcm = algLCM(_fractionNumReduced!, _fractionDenReduced!);
       //print('lcm: $lcm');
       _fractionNumReduced = _fractionNumReduced! ~/ lcm;
-      _fractionDenReduced = fractionDen! ~/ lcm;
+      _fractionDenReduced = _fractionDenReduced! ~/ lcm;
       //print('etapa2: ${toString()}');
 
       if (_fractionNumReduced! > _fractionDenReduced!) {
-        _integerReduced =
-            (integer ?? 0) + _fractionNumReduced! ~/ _fractionDenReduced!;
+        _integerReduced = (_integerReduced ?? 0) +
+            _fractionNumReduced! ~/ _fractionDenReduced!;
         _fractionNumReduced = _fractionNumReduced! % _fractionDenReduced!;
       }
       //print('etapa3: ${toString()}');
@@ -112,20 +112,16 @@ class MyNumber {
   int get signalValue {
     if (signal == MyNumberSignal.positive) {
       return 1;
-    } else if (signal == MyNumberSignal.negative) {
-      return -1;
     } else {
-      return Random(DateTime.now().microsecond).nextBool() ? 1 : -1;
+      return -1;
     }
   }
 
   String get signalSymbol {
     if (signal == MyNumberSignal.positive) {
       return '+';
-    } else if (signal == MyNumberSignal.negative) {
-      return '-';
     } else {
-      return Random(DateTime.now().microsecond).nextBool() ? '+' : '-';
+      return '-';
     }
   }
 
@@ -141,31 +137,15 @@ class MyNumber {
     return _integerReduced;
   }
 
+  double get inDouble {
+    return _inDouble!;
+  }
+
   MyNumberType? get type {
     return _type;
   }
 
-  String toStringInteger() {
-    return '$integerReduced';
-  }
-
-  String toStringDecimal() {
-    return '$integerReduced.$decimal';
-  }
-
-  String toStringFraction() {
-    return '$fractionNumReduced/$_fractionDenReduced';
-  }
-
-  String toStringMixed() {
-    return '$integerReduced $fractionNumReduced/$_fractionDenReduced';
-  }
-
-  String toStringMixedReduced() {
-    return '$integerReduced $fractionNumReduced/$_fractionDenReduced';
-  }
-
-  String toStringType() {
+  String toStringReduced() {
     String myNumber = '';
     if (type == MyNumberType.integer) {
       myNumber += '$signalSymbol$integerReduced';
@@ -185,16 +165,27 @@ class MyNumber {
 
   String toStringOrigin() {
     String myNumber = '';
-    if (type == MyNumberType.integer) {
+    MyNumberType typeTemp;
+    if (decimal == null && fractionNum == null && fractionDen == null) {
+      typeTemp = MyNumberType.integer;
+    } else if (fractionNum == null && fractionDen == null) {
+      typeTemp = MyNumberType.decimal;
+    } else if (integer == null && fractionNum != null && fractionDen != null) {
+      typeTemp = MyNumberType.fraction;
+    } else {
+      typeTemp = MyNumberType.mixed;
+    }
+
+    if (typeTemp == MyNumberType.integer) {
       myNumber += '$signalSymbol$integer';
     }
-    if (type == MyNumberType.decimal) {
+    if (typeTemp == MyNumberType.decimal) {
       myNumber += '$signalSymbol$integer.$decimal';
     }
-    if (type == MyNumberType.fraction) {
+    if (typeTemp == MyNumberType.fraction) {
       myNumber += '$signalSymbol$fractionNum/$fractionDen';
     }
-    if (type == MyNumberType.mixed) {
+    if (typeTemp == MyNumberType.mixed) {
       myNumber += '$signalSymbol$integer $fractionNum/$fractionDen';
     }
     return myNumber;
@@ -262,7 +253,6 @@ class MyNumber {
           ? MyNumberSignal.negative
           : MyNumberSignal.positive;
       output = output.copyWith(integer: integer?.abs(), signal: signal);
-      output.setType();
       return output;
     }
     //print('+++ sum 1 +++');

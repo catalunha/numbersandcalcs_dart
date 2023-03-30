@@ -1,6 +1,6 @@
 import 'alg_gcf_lcm.dart';
 
-void exampleGCFandLCM() {
+void testGCFandLCM() {
   int num1 = 2;
   int num2 = 3;
   print('GCF = ${algGCF(num1, num2)}');

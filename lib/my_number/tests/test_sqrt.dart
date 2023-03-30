@@ -1,7 +1,7 @@
 import 'package:numbersandcalcs_dart/my_number/my_number.dart';
 
-void exampleSqrt() {
-  print('exampleSqrt');
+void testSqrt() {
+  print('testSqrt');
   bool seeDetails = false;
 
   {
@@ -23,13 +23,13 @@ void exampleSqrt() {
       }
 
       print(
-          'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sqrt: ${sqrt.toStringType()}');
+          'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sqrt: ${sqrt.toStringReduced()}');
       assert(sqrt.signal == MyNumberSignal.positive);
       assert(sqrt.integerReduced == 3);
     } catch (e) {
       print(e);
       print(
-          'Erro na Raiz Quadrada: num1: ${num1.toStringType()} num2: ${num2.toStringType()} ');
+          'Erro na Raiz Quadrada: num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} ');
     }
   }
 
@@ -52,14 +52,14 @@ void exampleSqrt() {
       }
 
       print(
-          'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sqrt: ${sqrt.toStringType()}');
+          'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sqrt: ${sqrt.toStringReduced()}');
       // assert(sqrt.signal == MyNumberSignal.positive);
       // assert(sqrt.fractionNumReduced == 4);
       // assert(sqrt.fractionDenReduced == 9);
     } catch (e) {
       print(e);
       print(
-          'Erro na Raiz Quadrada: num1: ${num1.toStringType()} num2: ${num2.toStringType()} ');
+          'Erro na Raiz Quadrada: num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} ');
     }
   }
   {
@@ -82,7 +82,7 @@ void exampleSqrt() {
       }
 
       print(
-          'num1: ${num1.toStringType()} num2: ${num2.toStringType()} sqrt: ${sqrt.toStringType()}');
+          'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sqrt: ${sqrt.toStringReduced()}');
       // assert(sqrt.signal == MyNumberSignal.positive);
       // assert(sqrt.integerReduced == 2);
       // assert(sqrt.fractionNumReduced == 7);
@@ -90,7 +90,7 @@ void exampleSqrt() {
     } catch (e) {
       print(e);
       print(
-          'Erro na Raiz Quadrada: num1: ${num1.toStringType()} num2: ${num2.toStringType()} ');
+          'Erro na Raiz Quadrada: num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} ');
     }
   }
 }

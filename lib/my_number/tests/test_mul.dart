@@ -1,29 +1,29 @@
 import 'package:numbersandcalcs_dart/my_number/my_number.dart';
 
-void exampleDiv() {
-  print('exampleDiv');
+void testMul() {
+  print('testMul');
   bool seeDetails = false;
 
   {
     MyNumber num1 = MyNumber(
       signal: MyNumberSignal.positive,
-      integer: 6,
+      integer: 2,
     );
     MyNumber num2 = MyNumber(
       signal: MyNumberSignal.positive,
       integer: 3,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.positive);
-    assert(div.integerReduced == 2);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.positive);
+    assert(mul.integerReduced == 6);
   }
   {
     MyNumber num1 = MyNumber(
@@ -34,18 +34,17 @@ void exampleDiv() {
       signal: MyNumberSignal.positive,
       integer: 3,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.negative);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.negative);
+    assert(mul.integerReduced == 6);
   }
   {
     MyNumber num1 = MyNumber(
@@ -56,18 +55,17 @@ void exampleDiv() {
       signal: MyNumberSignal.negative,
       integer: 3,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.negative);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.negative);
+    assert(mul.integerReduced == 6);
   }
   {
     MyNumber num1 = MyNumber(
@@ -80,18 +78,18 @@ void exampleDiv() {
       fractionNum: 3,
       fractionDen: 4,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.positive);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.positive);
+    assert(mul.fractionNumReduced == 3);
+    assert(mul.fractionDenReduced == 8);
   }
   {
     MyNumber num1 = MyNumber(
@@ -104,18 +102,18 @@ void exampleDiv() {
       fractionNum: 3,
       fractionDen: 4,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.negative);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.negative);
+    assert(mul.fractionNumReduced == 3);
+    assert(mul.fractionDenReduced == 8);
   }
   {
     MyNumber num1 = MyNumber(
@@ -128,18 +126,18 @@ void exampleDiv() {
       fractionNum: 3,
       fractionDen: 4,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.negative);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 3);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.negative);
+    assert(mul.fractionNumReduced == 3);
+    assert(mul.fractionDenReduced == 8);
   }
 
   {
@@ -153,18 +151,19 @@ void exampleDiv() {
       signal: MyNumberSignal.positive,
       integer: 4,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.positive);
-    assert(div.fractionNumReduced == 5);
-    assert(div.fractionDenReduced == 12);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.positive);
+    assert(mul.integerReduced == 6);
+    assert(mul.fractionNumReduced == 2);
+    assert(mul.fractionDenReduced == 3);
   }
 
   {
@@ -178,19 +177,19 @@ void exampleDiv() {
       fractionNum: 2,
       fractionDen: 3,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.positive);
-    assert(div.integerReduced == 2);
-    assert(div.fractionNumReduced == 2);
-    assert(div.fractionDenReduced == 5);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.positive);
+    assert(mul.integerReduced == 6);
+    assert(mul.fractionNumReduced == 2);
+    assert(mul.fractionDenReduced == 3);
   }
   {
     MyNumber num1 = MyNumber(
@@ -205,18 +204,19 @@ void exampleDiv() {
       fractionNum: 5,
       fractionDen: 6,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.positive);
-    assert(div.fractionNumReduced == 10);
-    assert(div.fractionDenReduced == 29);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.positive);
+    assert(mul.integerReduced == 8);
+    assert(mul.fractionNumReduced == 1);
+    assert(mul.fractionDenReduced == 18);
   }
   {
     MyNumber num1 = MyNumber(
@@ -231,16 +231,18 @@ void exampleDiv() {
       fractionNum: 6,
       fractionDen: 9,
     );
-    MyNumber div = num1 / num2;
+    MyNumber mul = num1 * num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(div);
+      print(mul);
     }
+
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} div: ${div.toStringType()}');
-    assert(div.signal == MyNumberSignal.positive);
-    assert(div.fractionNumReduced == 15);
-    assert(div.fractionDenReduced == 22);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} mul: ${mul.toStringReduced()}');
+    assert(mul.signal == MyNumberSignal.positive);
+    assert(mul.integerReduced == 9);
+    assert(mul.fractionNumReduced == 1);
+    assert(mul.fractionDenReduced == 6);
   }
 }

@@ -1,7 +1,7 @@
 import 'package:numbersandcalcs_dart/my_number/my_number.dart';
 
-void examplePot() {
-  print('examplePot');
+void testPot() {
+  print('testPot');
   bool seeDetails = false;
 
   {
@@ -21,7 +21,7 @@ void examplePot() {
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} pot: ${pot.toStringType()}');
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} pot: ${pot.toStringReduced()}');
     assert(pot.signal == MyNumberSignal.positive);
     assert(pot.integerReduced == 9);
   }
@@ -43,7 +43,7 @@ void examplePot() {
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} pot: ${pot.toStringType()}');
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} pot: ${pot.toStringReduced()}');
     assert(pot.signal == MyNumberSignal.positive);
     assert(pot.fractionNumReduced == 4);
     assert(pot.fractionDenReduced == 9);
@@ -67,7 +67,7 @@ void examplePot() {
     }
 
     print(
-        'num1: ${num1.toStringType()} num2: ${num2.toStringType()} pot: ${pot.toStringType()}');
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} pot: ${pot.toStringReduced()}');
     assert(pot.signal == MyNumberSignal.positive);
     assert(pot.integerReduced == 2);
     assert(pot.fractionNumReduced == 7);
