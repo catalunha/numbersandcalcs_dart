@@ -301,7 +301,7 @@ class MyNumber {
 
   @override
   String toString() {
-    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _type:$_type _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _typeReduced:$_typeReduced _inDouble: $_inDouble)';
+    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _type: $_type _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _typeReduced: $_typeReduced _inDouble: $_inDouble)';
   }
 
   MyNumber operator +(MyNumber num2) {
