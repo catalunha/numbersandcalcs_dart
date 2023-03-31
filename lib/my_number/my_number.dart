@@ -12,11 +12,12 @@ class MyNumber {
   final int? decimal;
   final int? fractionNum;
   final int? fractionDen;
+  MyNumberType? _type;
   int? _integerReduced;
   int? _fractionNumReduced;
   int? _fractionDenReduced;
+  MyNumberType? _typeReduced;
   double? _inDouble;
-  MyNumberType? _type;
   MyNumber({
     // this.type = MyNumberType.integer,
     this.signal = MyNumberSignal.positive,
@@ -71,7 +72,7 @@ class MyNumber {
   }
 
   void calculeInDouble() {
-    if (type == MyNumberType.integer) {
+    if (typeReduced == MyNumberType.integer) {
       try {
         _inDouble = _integerReduced == null
             ? null
@@ -80,32 +81,43 @@ class MyNumber {
         print('Erro em integer');
       }
     }
-    if (type == MyNumberType.decimal) {
+    if (typeReduced == MyNumberType.decimal) {
       _inDouble = (signalValue *
           (_integerReduced! + _fractionNumReduced! / _fractionDenReduced!));
     }
-    if (type == MyNumberType.fraction) {
+    if (typeReduced == MyNumberType.fraction) {
       _inDouble = signalValue * _fractionNumReduced! / _fractionDenReduced!;
     }
-    if (type == MyNumberType.mixed) {
+    if (typeReduced == MyNumberType.mixed) {
       _inDouble = (signalValue *
           (_integerReduced! + _fractionNumReduced! / _fractionDenReduced!));
     }
   }
 
   void setType() {
-    if (decimal == null &&
-        _fractionNumReduced == null &&
-        _fractionDenReduced == null) {
+    //original
+    if (decimal == null && fractionNum == null && fractionDen == null) {
       _type = MyNumberType.integer;
-    } else if (_fractionNumReduced == null && _fractionDenReduced == null) {
+    } else if (fractionNum == null && fractionDen == null) {
       _type = MyNumberType.decimal;
-    } else if (_integerReduced == null &&
-        _fractionNumReduced != null &&
-        _fractionDenReduced != null) {
+    } else if (integer == null && fractionNum != null && fractionDen != null) {
       _type = MyNumberType.fraction;
     } else {
       _type = MyNumberType.mixed;
+    }
+    //reduced
+    if (decimal == null &&
+        _fractionNumReduced == null &&
+        _fractionDenReduced == null) {
+      _typeReduced = MyNumberType.integer;
+    } else if (_fractionNumReduced == null && _fractionDenReduced == null) {
+      _typeReduced = MyNumberType.decimal;
+    } else if (_integerReduced == null &&
+        _fractionNumReduced != null &&
+        _fractionDenReduced != null) {
+      _typeReduced = MyNumberType.fraction;
+    } else {
+      _typeReduced = MyNumberType.mixed;
     }
   }
 
@@ -145,18 +157,22 @@ class MyNumber {
     return _type;
   }
 
+  MyNumberType? get typeReduced {
+    return _typeReduced;
+  }
+
   String toStringReduced() {
     String myNumber = '';
-    if (type == MyNumberType.integer) {
+    if (typeReduced == MyNumberType.integer) {
       myNumber += '$signalSymbol$integerReduced';
     }
-    if (type == MyNumberType.decimal) {
+    if (typeReduced == MyNumberType.decimal) {
       myNumber += '$signalSymbol$integerReduced.$decimal';
     }
-    if (type == MyNumberType.fraction) {
+    if (typeReduced == MyNumberType.fraction) {
       myNumber += '$signalSymbol$fractionNumReduced/$_fractionDenReduced';
     }
-    if (type == MyNumberType.mixed) {
+    if (typeReduced == MyNumberType.mixed) {
       myNumber +=
           '$signalSymbol$integerReduced $fractionNumReduced/$_fractionDenReduced';
     }
@@ -165,27 +181,27 @@ class MyNumber {
 
   String toStringOrigin() {
     String myNumber = '';
-    MyNumberType typeTemp;
-    if (decimal == null && fractionNum == null && fractionDen == null) {
-      typeTemp = MyNumberType.integer;
-    } else if (fractionNum == null && fractionDen == null) {
-      typeTemp = MyNumberType.decimal;
-    } else if (integer == null && fractionNum != null && fractionDen != null) {
-      typeTemp = MyNumberType.fraction;
-    } else {
-      typeTemp = MyNumberType.mixed;
-    }
+    // MyNumberType typeTemp;
+    // if (decimal == null && fractionNum == null && fractionDen == null) {
+    //   typeTemp = MyNumberType.integer;
+    // } else if (fractionNum == null && fractionDen == null) {
+    //   typeTemp = MyNumberType.decimal;
+    // } else if (integer == null && fractionNum != null && fractionDen != null) {
+    //   typeTemp = MyNumberType.fraction;
+    // } else {
+    //   typeTemp = MyNumberType.mixed;
+    // }
 
-    if (typeTemp == MyNumberType.integer) {
+    if (type == MyNumberType.integer) {
       myNumber += '$signalSymbol$integer';
     }
-    if (typeTemp == MyNumberType.decimal) {
+    if (type == MyNumberType.decimal) {
       myNumber += '$signalSymbol$integer.$decimal';
     }
-    if (typeTemp == MyNumberType.fraction) {
+    if (type == MyNumberType.fraction) {
       myNumber += '$signalSymbol$fractionNum/$fractionDen';
     }
-    if (typeTemp == MyNumberType.mixed) {
+    if (type == MyNumberType.mixed) {
       myNumber += '$signalSymbol$integer $fractionNum/$fractionDen';
     }
     return myNumber;
@@ -238,7 +254,7 @@ class MyNumber {
 
   @override
   String toString() {
-    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _inDouble: $_inDouble, type: $type)';
+    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _type:$_type _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _typeReduced:$_typeReduced _inDouble: $_inDouble)';
   }
 
   MyNumber operator +(MyNumber num2) {
