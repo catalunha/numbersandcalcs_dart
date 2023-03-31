@@ -17,39 +17,39 @@ void testRead() {
     '-+/2',
     '-1-',
   ];
-
+/*
   for (var e in res) {
     bool isSuccessful = true;
     MyNumber myNumber = MyNumber();
     try {
-      var partes = e.split(' ');
-      if (partes.length == 1) {
-        String parte = partes[0];
-        if (!parte.contains('.') && !parte.contains('/')) {
+      var parts = e.split(' ');
+      if (parts.length == 1) {
+        String partUnic = parts[0];
+        if (!partUnic.contains('.') && !partUnic.contains('/')) {
           //print('$parte Is integer');
-          int a = int.parse(parte);
+          int a = int.parse(partUnic);
           myNumber = myNumber.copyWith(integer: a);
-        } else if (parte.contains('.')) {
+        } else if (partUnic.contains('.')) {
           //print('$parte Is decimal');
-          var partesDec = e.split('.');
-          int a = int.parse(partesDec[0]);
-          int b = int.parse(partesDec[1]);
+          var partsDec = partUnic.split('.');
+          int a = int.parse(partsDec[0]);
+          int b = int.parse(partsDec[1]);
           myNumber = myNumber.copyWith(integer: a, decimal: b);
-        } else if (parte.contains('/')) {
+        } else if (partUnic.contains('/')) {
           //print('$parte Is fração');
-          var partesDec = e.split('/');
-          int a = int.parse(partesDec[0]);
-          int b = int.parse(partesDec[1]);
+          var partsFrac = partUnic.split('/');
+          int a = int.parse(partsFrac[0]);
+          int b = int.parse(partsFrac[1]);
           myNumber = myNumber.copyWith(fractionNum: a, fractionDen: b);
         }
       } else {
-        String parteInt = partes[0];
-        List<String> parteFrac = partes[1].split('/');
-        String parteNum = parteFrac[0];
-        String parteDen = parteFrac[1];
-        int a = int.parse(parteInt);
-        int b = int.parse(parteNum);
-        int c = int.parse(parteDen);
+        String partInt = parts[0];
+        int a = int.parse(partInt);
+        List<String> partFrac = parts[1].split('/');
+        String partNum = partFrac[0];
+        String partDen = partFrac[1];
+        int b = int.parse(partNum);
+        int c = int.parse(partDen);
         myNumber =
             myNumber.copyWith(integer: a, fractionNum: b, fractionDen: c);
       }
@@ -62,22 +62,13 @@ void testRead() {
       print('$e conversão $isSuccessful.');
     }
   }
-
-  // print('identificando erros');
-  // print('4 1/2'.split(' ').length > 1);
-  // return;
-
-  // return;
-  // print('identificando tipo');
-  // for (var e in res) {
-  //   if (!e.contains(' ') && !e.contains('.') && !e.contains('/')) {
-  //     print('$e Is integer');
-  //   }
-  //   if (!e.contains(' ') && e.contains('/')) {
-  //     print('$e Is fraction');
-  //   }
-  //   if (e.contains(' ') && e.contains('/')) {
-  //     print('$e Is mixed');
-  //   }
-  // }
+  */
+  for (var e in res) {
+    MyNumber? myNumber = MyNumber.strint2MyNumber(e);
+    if (myNumber != null) {
+      print('$e conversão Ok. Com $myNumber');
+    } else {
+      print('$e conversão Failure.');
+    }
+  }
 }

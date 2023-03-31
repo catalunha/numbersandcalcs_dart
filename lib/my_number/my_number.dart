@@ -31,6 +31,53 @@ class MyNumber {
     setType();
     calculeInDouble();
   }
+
+  static MyNumber? strint2MyNumber(String myNumberInString) {
+    bool isSuccessful = true;
+
+    MyNumber myNumber = MyNumber();
+    try {
+      var parts = myNumberInString.split(' ');
+      if (parts.length == 1) {
+        String partUnic = parts[0];
+        if (!partUnic.contains('.') && !partUnic.contains('/')) {
+          //print('$parte Is integer');
+          int a = int.parse(partUnic);
+          myNumber = myNumber.copyWith(integer: a);
+        } else if (partUnic.contains('.')) {
+          //print('$parte Is decimal');
+          var partsDec = partUnic.split('.');
+          int a = int.parse(partsDec[0]);
+          int b = int.parse(partsDec[1]);
+          myNumber = myNumber.copyWith(integer: a, decimal: b);
+        } else if (partUnic.contains('/')) {
+          //print('$parte Is fração');
+          var partsFrac = partUnic.split('/');
+          int a = int.parse(partsFrac[0]);
+          int b = int.parse(partsFrac[1]);
+          myNumber = myNumber.copyWith(fractionNum: a, fractionDen: b);
+        }
+      } else {
+        String partInt = parts[0];
+        int a = int.parse(partInt);
+        List<String> partFrac = parts[1].split('/');
+        String partNum = partFrac[0];
+        String partDen = partFrac[1];
+        int b = int.parse(partNum);
+        int c = int.parse(partDen);
+        myNumber =
+            myNumber.copyWith(integer: a, fractionNum: b, fractionDen: c);
+      }
+    } catch (_) {
+      isSuccessful = false;
+    }
+    if (isSuccessful) {
+      return myNumber;
+    } else {
+      return null;
+    }
+  }
+
   void simplifyValues() {
     //print('etapa0: ${toString()}');
     _integerReduced = integer;
