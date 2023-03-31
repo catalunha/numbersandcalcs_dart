@@ -3,13 +3,14 @@ enum MyNumberType { integer, decimal, fraction, mixed }
 enum MyNumberSignal { positive, negative }
 
 class MyNumberSeed {
-  MyNumberType? _type;
+  final MyNumberType? type;
   final List<MyNumberSignal>? signal;
   final List<int>? integerList;
   final List<int>? decimaList;
   final List<int>? fractionNumList;
   final List<int>? fractionDenList;
   MyNumberSeed({
+    required this.type,
     this.signal,
     this.integerList,
     this.decimaList,
@@ -20,33 +21,33 @@ class MyNumberSeed {
   }
 
   void checkData() {
-    if (!(_type == MyNumberType.integer &&
+    if (!(type == MyNumberType.integer &&
         integerList != null &&
         integerList!.isNotEmpty &&
         decimaList == null &&
         fractionNumList == null &&
         fractionDenList == null)) {
-      throw Exception('Dados não são do tipo $_type');
+      throw Exception('Dados não são do tipo $type');
     }
-    if (!(_type == MyNumberType.decimal &&
+    if (!(type == MyNumberType.decimal &&
         integerList != null &&
         integerList!.isNotEmpty &&
         decimaList != null &&
         decimaList!.isNotEmpty &&
         fractionNumList == null &&
         fractionDenList == null)) {
-      throw Exception('Dados não são do tipo $_type');
+      throw Exception('Dados não são do tipo $type');
     }
-    if (!(_type == MyNumberType.fraction &&
+    if (!(type == MyNumberType.fraction &&
         integerList == null &&
         decimaList == null &&
         fractionNumList != null &&
         fractionNumList!.isNotEmpty &&
         fractionDenList != null &&
         fractionDenList!.isNotEmpty)) {
-      throw Exception('Dados não são do tipo $_type');
+      throw Exception('Dados não são do tipo $type');
     }
-    if (!(_type == MyNumberType.mixed &&
+    if (!(type == MyNumberType.mixed &&
         integerList != null &&
         integerList!.isNotEmpty &&
         decimaList == null &&
@@ -54,7 +55,7 @@ class MyNumberSeed {
         fractionNumList!.isNotEmpty &&
         fractionDenList != null &&
         fractionDenList!.isNotEmpty)) {
-      throw Exception('Dados não são do tipo $_type');
+      throw Exception('Dados não são do tipo $type');
     }
   }
 }
