@@ -6,8 +6,8 @@ void testFractions() {
   bool seeDetails = false;
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.fraction,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.fraction,
+      signalList: [NumberQSignal.positive],
       fractionNumList: [1],
       fractionDenList: [3, 4],
     );
@@ -19,8 +19,8 @@ void testFractions() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.fraction,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.fraction,
+      signalList: [NumberQSignal.positive],
       fractionNumList: [2],
       fractionDenList: [3, 4],
     );
@@ -32,8 +32,8 @@ void testFractions() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.fraction,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.fraction,
+      signalList: [NumberQSignal.positive],
       fractionNumList: [5],
       fractionDenList: [3, 4],
     );
@@ -45,8 +45,8 @@ void testFractions() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.fraction,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.fraction,
+      signalList: [NumberQSignal.positive],
       fractionNumList: [3, 4],
       fractionDenList: [1],
     );
@@ -58,8 +58,8 @@ void testFractions() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.fraction,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.fraction,
+      signalList: [NumberQSignal.positive],
       fractionNumList: [3, 4],
       fractionDenList: [2],
     );
@@ -71,8 +71,8 @@ void testFractions() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.fraction,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.fraction,
+      signalList: [NumberQSignal.positive],
       fractionNumList: [3, 4],
       fractionDenList: [5],
     );

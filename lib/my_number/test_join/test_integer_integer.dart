@@ -6,8 +6,8 @@ void testIntegerInteger() {
   bool seeDetails = false;
   {
     MyNumberSeed seed1 = MyNumberSeed(
-      type: MyNumberType.integer,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.integer,
+      signalList: [NumberQSignal.positive],
       integerList: [1, 2],
     );
     print('seed1: $seed1');
@@ -16,8 +16,8 @@ void testIntegerInteger() {
       print(element.toStringReduced());
     }
     MyNumberSeed seed2 = MyNumberSeed(
-      type: MyNumberType.integer,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.integer,
+      signalList: [NumberQSignal.positive],
       integerList: [1, 2, 3],
     );
     print('seed2: $seed2');
@@ -39,8 +39,8 @@ void testIntegerInteger() {
   print('Combinando seeds');
   {
     MyNumberSeed seed1 = MyNumberSeed(
-      type: MyNumberType.integer,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.integer,
+      signalList: [NumberQSignal.positive],
       integerList: [1, 2],
     );
     print('seed1: $seed1');
@@ -49,8 +49,8 @@ void testIntegerInteger() {
       print(element.toStringReduced());
     }
     MyNumberSeed seed2 = MyNumberSeed(
-      type: MyNumberType.integer,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.integer,
+      signalList: [NumberQSignal.positive],
       integerList: [1, 2, 3],
     );
     print('seed2: $seed2');

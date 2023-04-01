@@ -6,8 +6,8 @@ void testMixedMixed() {
   bool seeDetails = false;
   {
     MyNumberSeed seed1 = MyNumberSeed(
-      type: MyNumberType.mixed,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.mixed,
+      signalList: [NumberQSignal.positive],
       integerList: [1],
       fractionNumList: [1],
       fractionDenList: [3, 4],
@@ -18,8 +18,8 @@ void testMixedMixed() {
       print(element.toStringReduced());
     }
     MyNumberSeed seed2 = MyNumberSeed(
-      type: MyNumberType.mixed,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.mixed,
+      signalList: [NumberQSignal.positive],
       integerList: [1],
       fractionNumList: [3, 4],
       fractionDenList: [1, 2],

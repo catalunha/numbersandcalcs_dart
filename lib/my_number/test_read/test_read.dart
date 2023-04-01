@@ -7,6 +7,10 @@ void testRead() {
     '+1.1',
     '+12/123',
     '+1 12/123',
+    '-3',
+    '-3.1',
+    '-312/123',
+    '-3 12/123',
     '+2.1 1/2',
     '+2 1.2/2',
     '+2 1.1',
@@ -64,7 +68,7 @@ void testRead() {
   }
   */
   for (var e in res) {
-    MyNumber? myNumber = MyNumber.strint2MyNumber(e);
+    NumberQ? myNumber = NumberQ.strint2MyNumber(e);
     if (myNumber != null) {
       print('$e conversão Ok. Com $myNumber');
     } else {

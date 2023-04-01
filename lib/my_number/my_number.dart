@@ -2,25 +2,25 @@ import 'dart:math';
 
 import '../gcf_lcm/alg_gcf_lcm.dart';
 
-enum MyNumberType { integer, decimal, fraction, mixed }
+enum NumberQType { integer, decimal, fraction, mixed }
 
-enum MyNumberSignal { positive, negative }
+enum NumberQSignal { positive, negative }
 
-class MyNumber {
-  final MyNumberSignal signal;
+class NumberQ {
+  final NumberQSignal signal;
   final int? integer;
   final int? decimal;
   final int? fractionNum;
   final int? fractionDen;
-  MyNumberType? _type;
+  NumberQType? _type;
   int? _integerReduced;
   int? _fractionNumReduced;
   int? _fractionDenReduced;
-  MyNumberType? _typeReduced;
+  NumberQType? _typeReduced;
   double? _inDouble;
-  MyNumber({
+  NumberQ({
     // this.type = MyNumberType.integer,
-    this.signal = MyNumberSignal.positive,
+    this.signal = NumberQSignal.positive,
     this.integer,
     this.decimal,
     this.fractionNum,
@@ -32,10 +32,10 @@ class MyNumber {
     calculeInDouble();
   }
 
-  static MyNumber? strint2MyNumber(String myNumberInString) {
+  static NumberQ? strint2MyNumber(String myNumberInString) {
     bool isSuccessful = true;
 
-    MyNumber myNumber = MyNumber();
+    NumberQ myNumber = NumberQ();
     try {
       var parts = myNumberInString.split(' ');
       if (parts.length == 1) {
@@ -43,19 +43,36 @@ class MyNumber {
         if (!partUnic.contains('.') && !partUnic.contains('/')) {
           //print('$parte Is integer');
           int a = int.parse(partUnic);
-          myNumber = myNumber.copyWith(integer: a);
+          NumberQSignal signalTemp =
+              a >= 0 ? NumberQSignal.positive : NumberQSignal.negative;
+          myNumber = myNumber.copyWith(
+            integer: a.abs(),
+            signal: signalTemp,
+          );
         } else if (partUnic.contains('.')) {
           //print('$parte Is decimal');
           var partsDec = partUnic.split('.');
           int a = int.parse(partsDec[0]);
           int b = int.parse(partsDec[1]);
-          myNumber = myNumber.copyWith(integer: a, decimal: b);
+          NumberQSignal signalTemp =
+              a >= 0 ? NumberQSignal.positive : NumberQSignal.negative;
+          myNumber = myNumber.copyWith(
+            integer: a.abs(),
+            decimal: b.abs(),
+            signal: signalTemp,
+          );
         } else if (partUnic.contains('/')) {
           //print('$parte Is fração');
           var partsFrac = partUnic.split('/');
           int a = int.parse(partsFrac[0]);
           int b = int.parse(partsFrac[1]);
-          myNumber = myNumber.copyWith(fractionNum: a, fractionDen: b);
+          NumberQSignal signalTemp =
+              a >= 0 ? NumberQSignal.positive : NumberQSignal.negative;
+          myNumber = myNumber.copyWith(
+            fractionNum: a.abs(),
+            fractionDen: b.abs(),
+            signal: signalTemp,
+          );
         }
       } else {
         String partInt = parts[0];
@@ -65,8 +82,14 @@ class MyNumber {
         String partDen = partFrac[1];
         int b = int.parse(partNum);
         int c = int.parse(partDen);
-        myNumber =
-            myNumber.copyWith(integer: a, fractionNum: b, fractionDen: c);
+        NumberQSignal signalTemp =
+            a >= 0 ? NumberQSignal.positive : NumberQSignal.negative;
+        myNumber = myNumber.copyWith(
+          integer: a.abs(),
+          fractionNum: b.abs(),
+          fractionDen: c.abs(),
+          signal: signalTemp,
+        );
       }
     } catch (_) {
       isSuccessful = false;
@@ -119,7 +142,7 @@ class MyNumber {
   }
 
   void calculeInDouble() {
-    if (typeReduced == MyNumberType.integer) {
+    if (typeReduced == NumberQType.integer) {
       try {
         _inDouble = _integerReduced == null
             ? null
@@ -128,14 +151,14 @@ class MyNumber {
         print('Erro em integer');
       }
     }
-    if (typeReduced == MyNumberType.decimal) {
+    if (typeReduced == NumberQType.decimal) {
       _inDouble = (signalValue *
           (_integerReduced! + _fractionNumReduced! / _fractionDenReduced!));
     }
-    if (typeReduced == MyNumberType.fraction) {
+    if (typeReduced == NumberQType.fraction) {
       _inDouble = signalValue * _fractionNumReduced! / _fractionDenReduced!;
     }
-    if (typeReduced == MyNumberType.mixed) {
+    if (typeReduced == NumberQType.mixed) {
       _inDouble = (signalValue *
           (_integerReduced! + _fractionNumReduced! / _fractionDenReduced!));
     }
@@ -144,32 +167,32 @@ class MyNumber {
   void setType() {
     //original
     if (decimal == null && fractionNum == null && fractionDen == null) {
-      _type = MyNumberType.integer;
+      _type = NumberQType.integer;
     } else if (fractionNum == null && fractionDen == null) {
-      _type = MyNumberType.decimal;
+      _type = NumberQType.decimal;
     } else if (integer == null && fractionNum != null && fractionDen != null) {
-      _type = MyNumberType.fraction;
+      _type = NumberQType.fraction;
     } else {
-      _type = MyNumberType.mixed;
+      _type = NumberQType.mixed;
     }
     //reduced
     if (decimal == null &&
         _fractionNumReduced == null &&
         _fractionDenReduced == null) {
-      _typeReduced = MyNumberType.integer;
+      _typeReduced = NumberQType.integer;
     } else if (_fractionNumReduced == null && _fractionDenReduced == null) {
-      _typeReduced = MyNumberType.decimal;
+      _typeReduced = NumberQType.decimal;
     } else if (_integerReduced == null &&
         _fractionNumReduced != null &&
         _fractionDenReduced != null) {
-      _typeReduced = MyNumberType.fraction;
+      _typeReduced = NumberQType.fraction;
     } else {
-      _typeReduced = MyNumberType.mixed;
+      _typeReduced = NumberQType.mixed;
     }
   }
 
   int get signalValue {
-    if (signal == MyNumberSignal.positive) {
+    if (signal == NumberQSignal.positive) {
       return 1;
     } else {
       return -1;
@@ -177,7 +200,7 @@ class MyNumber {
   }
 
   String get signalSymbol {
-    if (signal == MyNumberSignal.positive) {
+    if (signal == NumberQSignal.positive) {
       return '+';
     } else {
       return '-';
@@ -200,26 +223,26 @@ class MyNumber {
     return _inDouble!;
   }
 
-  MyNumberType? get type {
+  NumberQType? get type {
     return _type;
   }
 
-  MyNumberType? get typeReduced {
+  NumberQType? get typeReduced {
     return _typeReduced;
   }
 
   String toStringReduced() {
     String myNumber = '';
-    if (typeReduced == MyNumberType.integer) {
+    if (typeReduced == NumberQType.integer) {
       myNumber += '$signalSymbol$integerReduced';
     }
-    if (typeReduced == MyNumberType.decimal) {
+    if (typeReduced == NumberQType.decimal) {
       myNumber += '$signalSymbol$integerReduced.$decimal';
     }
-    if (typeReduced == MyNumberType.fraction) {
+    if (typeReduced == NumberQType.fraction) {
       myNumber += '$signalSymbol$fractionNumReduced/$_fractionDenReduced';
     }
-    if (typeReduced == MyNumberType.mixed) {
+    if (typeReduced == NumberQType.mixed) {
       myNumber +=
           '$signalSymbol$integerReduced $fractionNumReduced/$_fractionDenReduced';
     }
@@ -239,29 +262,29 @@ class MyNumber {
     //   typeTemp = MyNumberType.mixed;
     // }
 
-    if (type == MyNumberType.integer) {
+    if (type == NumberQType.integer) {
       myNumber += '$signalSymbol$integer';
     }
-    if (type == MyNumberType.decimal) {
+    if (type == NumberQType.decimal) {
       myNumber += '$signalSymbol$integer.$decimal';
     }
-    if (type == MyNumberType.fraction) {
+    if (type == NumberQType.fraction) {
       myNumber += '$signalSymbol$fractionNum/$fractionDen';
     }
-    if (type == MyNumberType.mixed) {
+    if (type == NumberQType.mixed) {
       myNumber += '$signalSymbol$integer $fractionNum/$fractionDen';
     }
     return myNumber;
   }
 
-  MyNumber copyWith({
-    MyNumberSignal? signal,
+  NumberQ copyWith({
+    NumberQSignal? signal,
     int? integer,
     int? decimal,
     int? fractionNum,
     int? fractionDen,
   }) {
-    return MyNumber(
+    return NumberQ(
       signal: signal ?? this.signal,
       integer: integer ?? this.integer,
       decimal: decimal ?? this.decimal,
@@ -274,7 +297,7 @@ class MyNumber {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is MyNumber &&
+    return other is NumberQ &&
         other.signal == signal &&
         other.integer == integer &&
         other.decimal == decimal &&
@@ -304,17 +327,17 @@ class MyNumber {
     return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _type: $_type _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _typeReduced: $_typeReduced _inDouble: $_inDouble)';
   }
 
-  MyNumber operator +(MyNumber num2) {
+  NumberQ operator +(NumberQ num2) {
     //print('+++ sum +++');
-    MyNumber output = MyNumber();
-    if (type == MyNumberType.integer && num2.type == MyNumberType.integer) {
+    NumberQ output = NumberQ();
+    if (type == NumberQType.integer && num2.type == NumberQType.integer) {
       int? integerTemp = (integerReduced == null) && num2.integerReduced == null
           ? null
           : signalValue * (integerReduced ?? 0) +
               num2.signalValue * (num2.integerReduced ?? 0);
-      MyNumberSignal signal = integerTemp != null && integerTemp < 0
-          ? MyNumberSignal.negative
-          : MyNumberSignal.positive;
+      NumberQSignal signal = integerTemp != null && integerTemp < 0
+          ? NumberQSignal.negative
+          : NumberQSignal.positive;
       output = output.copyWith(
         integer: integerTemp?.abs(),
         signal: signal,
@@ -335,8 +358,8 @@ class MyNumber {
     f2num = (f2num) * (gcf ~/ (f2den));
     int fnum = signalValue * f1num + num2.signalValue * f2num;
     int fden = gcf;
-    MyNumberSignal signal =
-        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    NumberQSignal signal =
+        fnum < 0 ? NumberQSignal.negative : NumberQSignal.positive;
     //print('+++ sum 2 +++');
 
     output = output.copyWith(
@@ -352,16 +375,16 @@ class MyNumber {
     return output;
   }
 
-  MyNumber operator -(MyNumber num2) {
-    MyNumber output = MyNumber();
-    if (type == MyNumberType.integer && num2.type == MyNumberType.integer) {
+  NumberQ operator -(NumberQ num2) {
+    NumberQ output = NumberQ();
+    if (type == NumberQType.integer && num2.type == NumberQType.integer) {
       int? integerTemp = (integerReduced == null) && num2.integerReduced == null
           ? null
           : signalValue * (integerReduced ?? 0) -
               num2.signalValue * (num2.integerReduced ?? 0);
-      MyNumberSignal signal = integerTemp != null && integerTemp < 0
-          ? MyNumberSignal.negative
-          : MyNumberSignal.positive;
+      NumberQSignal signal = integerTemp != null && integerTemp < 0
+          ? NumberQSignal.negative
+          : NumberQSignal.positive;
       output = output.copyWith(
         integer: integerTemp?.abs(),
         signal: signal,
@@ -381,8 +404,8 @@ class MyNumber {
     f2num = (f2num) * (gcf ~/ (f2den));
     int fnum = signalValue * f1num - num2.signalValue * f2num;
     int fden = gcf;
-    MyNumberSignal signal =
-        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    NumberQSignal signal =
+        fnum < 0 ? NumberQSignal.negative : NumberQSignal.positive;
     output = output.copyWith(
       fractionNum: fnum.abs(),
       fractionDen: fden,
@@ -391,8 +414,8 @@ class MyNumber {
     return output;
   }
 
-  MyNumber operator *(MyNumber num2) {
-    MyNumber output = MyNumber();
+  NumberQ operator *(NumberQ num2) {
+    NumberQ output = NumberQ();
     int f1num = (fractionDenReduced ?? 1) * (integerReduced ?? 0) +
         (fractionNumReduced ?? 0);
     int f1den = fractionDenReduced ?? 1;
@@ -404,8 +427,8 @@ class MyNumber {
     int lcm = algLCM(fnum, fden);
     fnum = fnum ~/ lcm;
     fden = fden ~/ lcm;
-    MyNumberSignal signal =
-        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    NumberQSignal signal =
+        fnum < 0 ? NumberQSignal.negative : NumberQSignal.positive;
     fnum = fnum.abs();
     output = output.copyWith(
       integer: fden == 1 ? fnum : null,
@@ -416,8 +439,8 @@ class MyNumber {
     return output;
   }
 
-  MyNumber operator /(MyNumber num2) {
-    MyNumber output = MyNumber();
+  NumberQ operator /(NumberQ num2) {
+    NumberQ output = NumberQ();
     int f1num = (fractionDenReduced ?? 1) * (integerReduced ?? 0) +
         (fractionNumReduced ?? 0);
     int f1den = fractionDenReduced ?? 1;
@@ -429,8 +452,8 @@ class MyNumber {
     int lcm = algLCM(fnum, fden);
     fnum = fnum ~/ lcm;
     fden = fden ~/ lcm;
-    MyNumberSignal signal =
-        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    NumberQSignal signal =
+        fnum < 0 ? NumberQSignal.negative : NumberQSignal.positive;
     fnum = fnum.abs();
     output = output.copyWith(
       integer: fden == 1 ? fnum : null,
@@ -441,13 +464,13 @@ class MyNumber {
     return output;
   }
 
-  MyNumber operator ^(MyNumber num2) {
-    if (num2.type != MyNumberType.integer &&
-        num2.signal != MyNumberSignal.positive) {
+  NumberQ operator ^(NumberQ num2) {
+    if (num2.type != NumberQType.integer &&
+        num2.signal != NumberQSignal.positive) {
       throw Exception('Expoente precisa ser inteiro e positivo');
     }
-    MyNumber output = MyNumber();
-    if (type == MyNumberType.integer) {
+    NumberQ output = NumberQ();
+    if (type == NumberQType.integer) {
       output = output.copyWith(
           integer: pow(integerReduced!, num2.integerReduced!).toInt());
       return output;
@@ -458,8 +481,8 @@ class MyNumber {
 
     int fnum = pow(signalValue * f1num, num2.integerReduced!).toInt();
     int fden = pow(f1den, num2.integerReduced!).toInt();
-    MyNumberSignal signal =
-        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    NumberQSignal signal =
+        fnum < 0 ? NumberQSignal.negative : NumberQSignal.positive;
     fnum = fnum.abs();
     output = output.copyWith(
       signal: signal,
@@ -469,14 +492,14 @@ class MyNumber {
     return output;
   }
 
-  MyNumber operator &(MyNumber num2) {
-    if (num2.type != MyNumberType.integer &&
-        num2.signal != MyNumberSignal.positive) {
+  NumberQ operator &(NumberQ num2) {
+    if (num2.type != NumberQType.integer &&
+        num2.signal != NumberQSignal.positive) {
       throw Exception('Raiz precisa ser inteiro e positivo');
     }
-    MyNumber output = MyNumber();
+    NumberQ output = NumberQ();
 
-    if (type == MyNumberType.integer) {
+    if (type == NumberQType.integer) {
       num temp = pow(integerReduced!, 1 / num2.integerReduced!);
       if (temp % 1 != 0) {
         throw Exception('Erro: A raiz quadrada é decimal');
@@ -500,8 +523,8 @@ class MyNumber {
     if (fden % 1 != 0) {
       throw Exception('Erro: A raiz quadrada é decimal');
     }
-    MyNumberSignal signal =
-        fnum < 0 ? MyNumberSignal.negative : MyNumberSignal.positive;
+    NumberQSignal signal =
+        fnum < 0 ? NumberQSignal.negative : NumberQSignal.positive;
     fnum = fnum.abs();
     //print('output1: $output');
     output = output.copyWith(

@@ -6,8 +6,8 @@ void testMixeds() {
   bool seeDetails = false;
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.mixed,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.mixed,
+      signalList: [NumberQSignal.positive],
       integerList: [1],
       fractionNumList: [1],
       fractionDenList: [3, 4],
@@ -20,8 +20,8 @@ void testMixeds() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.mixed,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.mixed,
+      signalList: [NumberQSignal.positive],
       integerList: [1],
       fractionNumList: [1, 2],
       fractionDenList: [3, 4],
@@ -34,8 +34,8 @@ void testMixeds() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.mixed,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.mixed,
+      signalList: [NumberQSignal.positive],
       integerList: [1],
       fractionNumList: [3, 4],
       fractionDenList: [1, 2],

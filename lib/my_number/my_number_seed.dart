@@ -1,8 +1,8 @@
 import 'my_number.dart';
 
 class MyNumberSeed {
-  final MyNumberType? type;
-  final List<MyNumberSignal>? signalList;
+  final NumberQType? type;
+  final List<NumberQSignal>? signalList;
   final List<int>? integerList;
   final List<int>? decimaList;
   final List<int>? fractionNumList;
@@ -18,25 +18,25 @@ class MyNumberSeed {
     checkData();
   }
 
-  List<MyNumber> exportList() {
-    List<MyNumber> myNumberList = [];
-    List<MyNumberSignal>? signalListTemp =
-        signalList ?? [MyNumberSignal.positive];
-    if (type == MyNumberType.integer) {
+  List<NumberQ> exportList() {
+    List<NumberQ> myNumberList = [];
+    List<NumberQSignal>? signalListTemp =
+        signalList ?? [NumberQSignal.positive];
+    if (type == NumberQType.integer) {
       for (var signal in signalListTemp) {
         for (var integer in integerList!) {
-          myNumberList.add(MyNumber(
+          myNumberList.add(NumberQ(
             signal: signal,
             integer: integer,
           ));
         }
       }
     }
-    if (type == MyNumberType.decimal) {
+    if (type == NumberQType.decimal) {
       for (var signal in signalListTemp) {
         for (var integer in integerList!) {
           for (var decimal in decimaList!) {
-            myNumberList.add(MyNumber(
+            myNumberList.add(NumberQ(
               signal: signal,
               integer: integer,
               decimal: decimal,
@@ -45,11 +45,11 @@ class MyNumberSeed {
         }
       }
     }
-    if (type == MyNumberType.fraction) {
+    if (type == NumberQType.fraction) {
       for (var signal in signalListTemp) {
         for (var fractionNum in fractionNumList!) {
           for (var fractionDen in fractionDenList!) {
-            myNumberList.add(MyNumber(
+            myNumberList.add(NumberQ(
               signal: signal,
               fractionNum: fractionNum,
               fractionDen: fractionDen,
@@ -58,12 +58,12 @@ class MyNumberSeed {
         }
       }
     }
-    if (type == MyNumberType.mixed) {
+    if (type == NumberQType.mixed) {
       for (var signal in signalListTemp) {
         for (var integer in integerList!) {
           for (var fractionNum in fractionNumList!) {
             for (var fractionDen in fractionDenList!) {
-              myNumberList.add(MyNumber(
+              myNumberList.add(NumberQ(
                 signal: signal,
                 integer: integer,
                 fractionNum: fractionNum,
@@ -79,7 +79,7 @@ class MyNumberSeed {
   }
 
   void checkData() {
-    if (type == MyNumberType.integer) {
+    if (type == NumberQType.integer) {
       if (!(integerList != null &&
           integerList!.isNotEmpty &&
           decimaList == null &&
@@ -88,7 +88,7 @@ class MyNumberSeed {
         throw Exception('Dados não são do tipo $type');
       }
     }
-    if (type == MyNumberType.decimal) {
+    if (type == NumberQType.decimal) {
       if (!(integerList != null &&
           integerList!.isNotEmpty &&
           decimaList != null &&
@@ -98,7 +98,7 @@ class MyNumberSeed {
         throw Exception('Dados não são do tipo $type');
       }
     }
-    if (type == MyNumberType.fraction) {
+    if (type == NumberQType.fraction) {
       if (!(integerList == null &&
           decimaList == null &&
           fractionNumList != null &&
@@ -108,7 +108,7 @@ class MyNumberSeed {
         throw Exception('Dados não são do tipo $type');
       }
     }
-    if (type == MyNumberType.mixed) {
+    if (type == NumberQType.mixed) {
       if (!(integerList != null &&
           integerList!.isNotEmpty &&
           decimaList == null &&

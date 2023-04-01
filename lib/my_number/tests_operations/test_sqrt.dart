@@ -5,17 +5,17 @@ void testSqrt() {
   bool seeDetails = false;
 
   {
-    MyNumber num1 = MyNumber(
-      signal: MyNumberSignal.positive,
+    NumberQ num1 = NumberQ(
+      signal: NumberQSignal.positive,
       integer: 27,
     );
-    MyNumber num2 = MyNumber(
-      signal: MyNumberSignal.positive,
+    NumberQ num2 = NumberQ(
+      signal: NumberQSignal.positive,
       integer: 3,
     );
 
     try {
-      MyNumber sqrt = num1 & num2;
+      NumberQ sqrt = num1 & num2;
       if (seeDetails) {
         print(num1);
         print(num2);
@@ -24,7 +24,7 @@ void testSqrt() {
 
       print(
           'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sqrt: ${sqrt.toStringReduced()}');
-      assert(sqrt.signal == MyNumberSignal.positive);
+      assert(sqrt.signal == NumberQSignal.positive);
       assert(sqrt.integerReduced == 3);
     } catch (e) {
       print(e);
@@ -34,17 +34,17 @@ void testSqrt() {
   }
 
   {
-    MyNumber num1 = MyNumber(
-      signal: MyNumberSignal.positive,
+    NumberQ num1 = NumberQ(
+      signal: NumberQSignal.positive,
       fractionNum: 4,
       fractionDen: 16,
     );
-    MyNumber num2 = MyNumber(
-      signal: MyNumberSignal.positive,
+    NumberQ num2 = NumberQ(
+      signal: NumberQSignal.positive,
       integer: 2,
     );
     try {
-      MyNumber sqrt = num1 & num2;
+      NumberQ sqrt = num1 & num2;
       if (seeDetails) {
         print(num1);
         print(num2);
@@ -63,18 +63,18 @@ void testSqrt() {
     }
   }
   {
-    MyNumber num1 = MyNumber(
-      signal: MyNumberSignal.positive,
+    NumberQ num1 = NumberQ(
+      signal: NumberQSignal.positive,
       integer: 4,
       fractionNum: 9,
       fractionDen: 64,
     );
-    MyNumber num2 = MyNumber(
-      signal: MyNumberSignal.positive,
+    NumberQ num2 = NumberQ(
+      signal: NumberQSignal.positive,
       integer: 2,
     );
     try {
-      MyNumber sqrt = num1 & num2;
+      NumberQ sqrt = num1 & num2;
       if (seeDetails) {
         print(num1);
         print(num2);

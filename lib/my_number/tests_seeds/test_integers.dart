@@ -6,8 +6,8 @@ void testIntegers() {
   bool seeDetails = false;
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.integer,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.integer,
+      signalList: [NumberQSignal.positive],
       integerList: [1, 2],
     );
     print('seed: $seed');
@@ -17,8 +17,8 @@ void testIntegers() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.integer,
-      signalList: [MyNumberSignal.negative],
+      type: NumberQType.integer,
+      signalList: [NumberQSignal.negative],
       integerList: [3, 4],
     );
     print('seed: $seed');
@@ -28,8 +28,8 @@ void testIntegers() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.integer,
-      signalList: [MyNumberSignal.positive, MyNumberSignal.negative],
+      type: NumberQType.integer,
+      signalList: [NumberQSignal.positive, NumberQSignal.negative],
       integerList: [5, 6],
     );
     print('seed: $seed');

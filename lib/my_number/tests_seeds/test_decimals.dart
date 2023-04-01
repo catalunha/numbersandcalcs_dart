@@ -6,8 +6,8 @@ void testDecimals() {
   bool seeDetails = false;
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.decimal,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.decimal,
+      signalList: [NumberQSignal.positive],
       integerList: [1],
       decimaList: [1],
     );
@@ -19,8 +19,8 @@ void testDecimals() {
   }
   {
     MyNumberSeed seed = MyNumberSeed(
-      type: MyNumberType.decimal,
-      signalList: [MyNumberSignal.positive],
+      type: NumberQType.decimal,
+      signalList: [NumberQSignal.positive],
       integerList: [1],
       decimaList: [123],
     );
