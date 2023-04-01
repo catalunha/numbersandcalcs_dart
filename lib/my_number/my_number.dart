@@ -464,7 +464,7 @@ class NumberQ {
 
       output = output.copyWith(
         integer: integerTemp.abs(),
-        decimal: decimalTemp.abs().toString(),
+        decimal: decimalTemp.abs().toString().padLeft(3, '0'),
         signal: signal,
       );
       return output;
@@ -504,12 +504,10 @@ class NumberQ {
           (num2.integerReduced! * 1000 + num2.decimalReducedInt!);
 
       double productDouble = product / 1000000;
-      print(
-        productDouble.toString().split('.')[1].padRight(3, '0'),
-      );
+
       output = output.copyWith(
         integer: productDouble.toInt(),
-        decimal: productDouble.toString().split('.')[1].padRight(3, '0'),
+        decimal: productDouble.toStringAsFixed(3).split('.')[1],
         signal: signal,
       );
       return output;
