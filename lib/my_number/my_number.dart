@@ -384,8 +384,8 @@ class NumberQ {
       int? integerTemp = signalValue * (integerReduced ?? 0) +
           num2.signalValue * (num2.integerReduced ?? 0);
 
-      int? decimalTemp = signalValue * (decimalReducedInt ?? 0) +
-          num2.signalValue * (num2.decimalReducedInt ?? 0);
+      int? decimalTemp = signalValue * (decimalReducedInt!) +
+          num2.signalValue * (num2.decimalReducedInt!);
 
       if (decimalTemp >= 1000) {
         decimalTemp = decimalTemp - 1000;
@@ -394,7 +394,7 @@ class NumberQ {
 
       output = output.copyWith(
         integer: integerTemp.abs(),
-        decimal: decimalTemp.abs().toString(),
+        decimal: decimalTemp.abs().toString().padLeft(3, '0'),
         signal: signal,
       );
       return output;

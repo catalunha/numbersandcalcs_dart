@@ -3,6 +3,29 @@ import '../my_number.dart';
 void testDecimal() {
   print('testDecimal');
   bool seeDetails = false;
+  {
+    NumberQ num1 = NumberQ(
+      signal: NumberQSignal.positive,
+      integer: 0,
+      decimal: '001',
+    );
+    NumberQ num2 = NumberQ(
+      signal: NumberQSignal.positive,
+      integer: 0,
+      decimal: '002',
+    );
+    NumberQ sum = num1 + num2;
+    if (seeDetails) {
+      print(num1);
+      print(num2);
+      print(sum);
+    }
+
+    print(
+        'num1: ${num1.toStringReduced()} + num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
+    //assert(sum.signal == MyNumberSignal.positive);
+    //assert(sum.integerReduced == 5);
+  }
 
   {
     NumberQ num1 = NumberQ(
