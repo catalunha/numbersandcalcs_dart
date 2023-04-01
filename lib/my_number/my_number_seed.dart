@@ -4,7 +4,7 @@ class MyNumberSeed {
   final NumberQType? type;
   final List<NumberQSignal>? signalList;
   final List<int>? integerList;
-  final List<int>? decimaList;
+  final List<String>? decimaList;
   final List<int>? fractionNumList;
   final List<int>? fractionDenList;
   MyNumberSeed({

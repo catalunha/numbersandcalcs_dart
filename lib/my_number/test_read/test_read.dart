@@ -68,7 +68,7 @@ void testRead() {
   }
   */
   for (var e in res) {
-    NumberQ? myNumber = NumberQ.strint2MyNumber(e);
+    NumberQ? myNumber = NumberQ.parse(e);
     if (myNumber != null) {
       print('$e conversão Ok. Com $myNumber');
     } else {

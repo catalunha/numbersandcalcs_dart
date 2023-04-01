@@ -3,22 +3,24 @@ import 'package:numbersandcalcs_dart/my_number/tests.dart';
 void main(List<String> arguments) {
   // testGCFandLCM();
   // isolateTest();
-  testUnitario();
-  testSum();
-  testSub();
-  testMul();
-  testDiv();
+  // testUnitario();
+  // testSum();
+  // testSub();
+  // testMul();
+  // testDiv();
+  // testPot();
+  // testSqrt();
   testDecimal();
-  testPot();
-  testSqrt();
-  // generatingNumbers();
-  testIntegers();
-  testFractions();
-  testMixeds();
-  testDecimals();
 
-  testIntegerInteger();
-  testMixedMixed();
+  // // seeds();
+  // testIntegers();
+  // testFractions();
+  // testMixeds();
+  // // testDecimals();
 
-  testRead();
+  // //gerar e aplicar operação
+  // testIntegerInteger();
+  // testMixedMixed();
+
+  // testRead();
 }

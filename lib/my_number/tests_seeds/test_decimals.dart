@@ -9,7 +9,7 @@ void testDecimals() {
       type: NumberQType.decimal,
       signalList: [NumberQSignal.positive],
       integerList: [1],
-      decimaList: [1],
+      decimaList: ['1'],
     );
     print('seed: $seed');
     for (var element in seed.exportList()) {
@@ -22,7 +22,7 @@ void testDecimals() {
       type: NumberQType.decimal,
       signalList: [NumberQSignal.positive],
       integerList: [1],
-      decimaList: [123],
+      decimaList: ['123'],
     );
     print('seed: $seed');
     for (var element in seed.exportList()) {

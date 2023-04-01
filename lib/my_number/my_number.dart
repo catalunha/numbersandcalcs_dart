@@ -9,11 +9,14 @@ enum NumberQSignal { positive, negative }
 class NumberQ {
   final NumberQSignal signal;
   final int? integer;
-  final int? decimal;
   final int? fractionNum;
   final int? fractionDen;
+  final String? decimal;
   NumberQType? _type;
   int? _integerReduced;
+  String? _decimalReduced;
+  int? _decimalReducedInt;
+  int? _decimalPlaces;
   int? _fractionNumReduced;
   int? _fractionDenReduced;
   NumberQType? _typeReduced;
@@ -32,7 +35,7 @@ class NumberQ {
     calculeInDouble();
   }
 
-  static NumberQ? strint2MyNumber(String myNumberInString) {
+  static NumberQ? parse(String myNumberInString) {
     bool isSuccessful = true;
 
     NumberQ myNumber = NumberQ();
@@ -53,12 +56,12 @@ class NumberQ {
           //print('$parte Is decimal');
           var partsDec = partUnic.split('.');
           int a = int.parse(partsDec[0]);
-          int b = int.parse(partsDec[1]);
+          String b = partsDec[1];
           NumberQSignal signalTemp =
               a >= 0 ? NumberQSignal.positive : NumberQSignal.negative;
           myNumber = myNumber.copyWith(
             integer: a.abs(),
-            decimal: b.abs(),
+            decimal: b,
             signal: signalTemp,
           );
         } else if (partUnic.contains('/')) {
@@ -132,12 +135,22 @@ class NumberQ {
 
   void decimalToFraction() {
     if (decimal != null && (fractionNum != null || fractionDen != null)) {
-      throw Exception('A parte decimal é numero ou fração ?');
+      throw Exception('A parte decimal é numérica ou fração ?');
     }
     if (decimal != null) {
-      int lengthDecimal = decimal.toString().length;
-      _fractionNumReduced = decimal;
-      _fractionDenReduced = pow(10, lengthDecimal).toInt();
+      try {
+        _decimalPlaces = decimal!.length;
+        _decimalReduced = decimal;
+        if (_decimalPlaces! > 3) {
+          _decimalReduced = _decimalReduced!.substring(0, 3);
+        }
+        _decimalReduced = _decimalReduced!.padRight(3, '0');
+        _decimalReducedInt = int.parse(_decimalReduced!);
+        _fractionNumReduced = _decimalReducedInt;
+        _fractionDenReduced = 1000;
+      } catch (e) {
+        throw Exception('Decimal informado fora do padrão.');
+      }
     }
   }
 
@@ -176,11 +189,11 @@ class NumberQ {
       _type = NumberQType.mixed;
     }
     //reduced
-    if (decimal == null &&
+    if (_decimalReduced == null &&
         _fractionNumReduced == null &&
         _fractionDenReduced == null) {
       _typeReduced = NumberQType.integer;
-    } else if (_fractionNumReduced == null && _fractionDenReduced == null) {
+    } else if (_integerReduced != null && _decimalReduced != null) {
       _typeReduced = NumberQType.decimal;
     } else if (_integerReduced == null &&
         _fractionNumReduced != null &&
@@ -207,16 +220,28 @@ class NumberQ {
     }
   }
 
+  String? get decimalReduced {
+    return _decimalReduced;
+  }
+
+  int? get decimalReducedInt {
+    return _decimalReducedInt;
+  }
+
+  int? get decimalPlaces {
+    return _decimalPlaces;
+  }
+
+  int? get integerReduced {
+    return _integerReduced;
+  }
+
   int? get fractionNumReduced {
     return _fractionNumReduced;
   }
 
   int? get fractionDenReduced {
     return _fractionDenReduced;
-  }
-
-  int? get integerReduced {
-    return _integerReduced;
   }
 
   double get inDouble {
@@ -237,7 +262,7 @@ class NumberQ {
       myNumber += '$signalSymbol$integerReduced';
     }
     if (typeReduced == NumberQType.decimal) {
-      myNumber += '$signalSymbol$integerReduced.$decimal';
+      myNumber += '$signalSymbol$integerReduced.$_decimalReduced';
     }
     if (typeReduced == NumberQType.fraction) {
       myNumber += '$signalSymbol$fractionNumReduced/$_fractionDenReduced';
@@ -266,7 +291,7 @@ class NumberQ {
       myNumber += '$signalSymbol$integer';
     }
     if (type == NumberQType.decimal) {
-      myNumber += '$signalSymbol$integer.$decimal';
+      myNumber += '$signalSymbol$integer.$_decimalReduced';
     }
     if (type == NumberQType.fraction) {
       myNumber += '$signalSymbol$fractionNum/$fractionDen';
@@ -280,16 +305,16 @@ class NumberQ {
   NumberQ copyWith({
     NumberQSignal? signal,
     int? integer,
-    int? decimal,
     int? fractionNum,
     int? fractionDen,
+    String? decimal,
   }) {
     return NumberQ(
       signal: signal ?? this.signal,
       integer: integer ?? this.integer,
-      decimal: decimal ?? this.decimal,
       fractionNum: fractionNum ?? this.fractionNum,
       fractionDen: fractionDen ?? this.fractionDen,
+      decimal: decimal ?? this.decimal,
     );
   }
 
@@ -300,10 +325,13 @@ class NumberQ {
     return other is NumberQ &&
         other.signal == signal &&
         other.integer == integer &&
-        other.decimal == decimal &&
         other.fractionNum == fractionNum &&
         other.fractionDen == fractionDen &&
+        other.decimal == decimal &&
         other._integerReduced == _integerReduced &&
+        other._decimalReduced == _decimalReduced &&
+        other._decimalReducedInt == _decimalReducedInt &&
+        other._decimalPlaces == _decimalPlaces &&
         other._fractionNumReduced == _fractionNumReduced &&
         other._fractionDenReduced == _fractionDenReduced &&
         other._inDouble == _inDouble;
@@ -313,10 +341,13 @@ class NumberQ {
   int get hashCode {
     return signal.hashCode ^
         integer.hashCode ^
-        decimal.hashCode ^
         fractionNum.hashCode ^
         fractionDen.hashCode ^
+        decimal.hashCode ^
         _integerReduced.hashCode ^
+        _decimalReduced.hashCode ^
+        _decimalReducedInt.hashCode ^
+        _decimalPlaces.hashCode ^
         _fractionNumReduced.hashCode ^
         _fractionDenReduced.hashCode ^
         _inDouble.hashCode;
@@ -324,7 +355,7 @@ class NumberQ {
 
   @override
   String toString() {
-    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _type: $_type _integerReduced: $_integerReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _typeReduced: $_typeReduced _inDouble: $_inDouble)';
+    return 'MyNumber(signal: $signal, integer: $integer, decimal: $decimal, fractionNum: $fractionNum, fractionDen: $fractionDen, _type: $_type _integerReduced: $_integerReduced, _decimalReduced: $_decimalReduced, _fractionNumReduced: $_fractionNumReduced, _fractionDenReduced: $_fractionDenReduced, _typeReduced: $_typeReduced _inDouble: $_inDouble)';
   }
 
   NumberQ operator +(NumberQ num2) {
@@ -344,7 +375,30 @@ class NumberQ {
       );
       return output;
     }
-    //print('+++ sum 1 +++');
+
+    if (type == NumberQType.decimal && num2.type == NumberQType.decimal) {
+      var res1 = (integerReduced! + decimalReducedInt! / 1000);
+      var res2 = (num2.integerReduced! + num2.decimalReducedInt! / 1000);
+      NumberQSignal signal = res1 > res2 ? this.signal : num2.signal;
+
+      int? integerTemp = signalValue * (integerReduced ?? 0) +
+          num2.signalValue * (num2.integerReduced ?? 0);
+
+      int? decimalTemp = signalValue * (decimalReducedInt ?? 0) +
+          num2.signalValue * (num2.decimalReducedInt ?? 0);
+
+      if (decimalTemp >= 1000) {
+        decimalTemp = decimalTemp - 1000;
+        integerTemp++;
+      }
+
+      output = output.copyWith(
+        integer: integerTemp.abs(),
+        decimal: decimalTemp.abs().toString(),
+        signal: signal,
+      );
+      return output;
+    }
 
     int f1num = (_fractionDenReduced ?? 1) * (_integerReduced ?? 0) +
         (fractionNumReduced ?? 0);
@@ -392,6 +446,30 @@ class NumberQ {
       return output;
     }
 
+    if (type == NumberQType.decimal && num2.type == NumberQType.decimal) {
+      var res1 = (integerReduced! + decimalReducedInt! / 1000);
+      var res2 = -1 * (num2.integerReduced! + num2.decimalReducedInt! / 1000);
+      NumberQSignal signal = res1 > res2 ? this.signal : num2.signal;
+
+      int? integerTemp = signalValue * (integerReduced ?? 0) -
+          num2.signalValue * (num2.integerReduced ?? 0);
+
+      int? decimalTemp = signalValue * (decimalReducedInt ?? 0) -
+          num2.signalValue * (num2.decimalReducedInt ?? 0);
+
+      if (decimalTemp >= 1000) {
+        decimalTemp = decimalTemp - 1000;
+        integerTemp++;
+      }
+
+      output = output.copyWith(
+        integer: integerTemp.abs(),
+        decimal: decimalTemp.abs().toString(),
+        signal: signal,
+      );
+      return output;
+    }
+
     int f1num = (_fractionDenReduced ?? 1) * (_integerReduced ?? 0) +
         (fractionNumReduced ?? 0);
     int f1den = fractionDenReduced ?? 1;
@@ -416,6 +494,27 @@ class NumberQ {
 
   NumberQ operator *(NumberQ num2) {
     NumberQ output = NumberQ();
+
+    if (type == NumberQType.decimal && num2.type == NumberQType.decimal) {
+      NumberQSignal signal = (signalValue * num2.signalValue) > 0
+          ? NumberQSignal.positive
+          : NumberQSignal.negative;
+
+      int product = (integerReduced! * 1000 + decimalReducedInt!) *
+          (num2.integerReduced! * 1000 + num2.decimalReducedInt!);
+
+      double productDouble = product / 1000000;
+      print(
+        productDouble.toString().split('.')[1].padRight(3, '0'),
+      );
+      output = output.copyWith(
+        integer: productDouble.toInt(),
+        decimal: productDouble.toString().split('.')[1].padRight(3, '0'),
+        signal: signal,
+      );
+      return output;
+    }
+
     int f1num = (fractionDenReduced ?? 1) * (integerReduced ?? 0) +
         (fractionNumReduced ?? 0);
     int f1den = fractionDenReduced ?? 1;
