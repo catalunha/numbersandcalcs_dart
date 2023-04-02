@@ -18,7 +18,8 @@ class MyNumberSeed {
     checkData();
   }
 
-  List<NumberQ> exportList() {
+  List<NumberQ> exportList(
+      {List<int> multipleList = const [1], bool shuffleMultipleList = false}) {
     List<NumberQ> myNumberList = [];
     List<NumberQSignal>? signalListTemp =
         signalList ?? [NumberQSignal.positive];
@@ -49,11 +50,16 @@ class MyNumberSeed {
       for (var signal in signalListTemp) {
         for (var fractionNum in fractionNumList!) {
           for (var fractionDen in fractionDenList!) {
-            myNumberList.add(NumberQ(
-              signal: signal,
-              fractionNum: fractionNum,
-              fractionDen: fractionDen,
-            ));
+            if (shuffleMultipleList) {
+              multipleList.shuffle();
+            }
+            for (var muliple in multipleList) {
+              myNumberList.add(NumberQ(
+                signal: signal,
+                fractionNum: fractionNum * muliple,
+                fractionDen: fractionDen * muliple,
+              ));
+            }
           }
         }
       }

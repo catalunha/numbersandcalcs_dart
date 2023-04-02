@@ -107,7 +107,7 @@ class NumberQ {
   void simplifyValues() {
     //print('etapa0: ${toString()}');
     _integerReduced = integer;
-    decimalToFraction();
+    readDecimal();
     _fractionNumReduced = _fractionNumReduced ?? fractionNum;
     _fractionDenReduced = _fractionDenReduced ?? fractionDen;
     //print('etapa1: ${toString()}');
@@ -129,11 +129,23 @@ class NumberQ {
         _fractionNumReduced = null;
         _fractionDenReduced = null;
       }
+      if (_fractionNumReduced == null &&
+          _fractionDenReduced == null &&
+          _integerReduced == null) {
+        _integerReduced = 0;
+      }
+      if (_fractionNumReduced == _fractionDenReduced &&
+          _fractionNumReduced != null &&
+          _fractionDenReduced != null) {
+        _integerReduced = 1;
+        _fractionNumReduced = null;
+        _fractionDenReduced = null;
+      }
       //print('etapa4: ${toString()}');
     }
   }
 
-  void decimalToFraction() {
+  void readDecimal() {
     if (decimal != null && (fractionNum != null || fractionDen != null)) {
       throw Exception('A parte decimal é numérica ou fração ?');
     }
@@ -270,6 +282,27 @@ class NumberQ {
     if (typeReduced == NumberQType.mixed) {
       myNumber +=
           '$signalSymbol$integerReduced $fractionNumReduced/$_fractionDenReduced';
+    }
+    return myNumber;
+  }
+
+  String toStringFraction() {
+    String myNumber = '';
+    if (typeReduced == NumberQType.integer) {
+      myNumber += '$signalSymbol$integerReduced/1';
+    }
+    if (typeReduced == NumberQType.decimal) {
+      int num = (pow(10, _decimalPlaces!).toInt() *
+          _integerReduced! *
+          _decimalReducedInt!);
+      myNumber += '$signalSymbol$num/${pow(10, _decimalPlaces!).toInt()}';
+    }
+    if (typeReduced == NumberQType.fraction) {
+      myNumber += '$signalSymbol$fractionNumReduced/$_fractionDenReduced';
+    }
+    if (typeReduced == NumberQType.mixed) {
+      int num = _fractionDenReduced! * _integerReduced! + fractionNumReduced!;
+      myNumber += '$signalSymbol$num/$_fractionDenReduced';
     }
     return myNumber;
   }
