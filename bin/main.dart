@@ -2,7 +2,6 @@ import 'package:numbersandcalcs_dart/my_number/tests.dart';
 
 void main(List<String> arguments) {
   // testGCFandLCM();
-  // isolateTest();
   testUnitario();
   // testSum();
   // testSub();
@@ -23,6 +22,11 @@ void main(List<String> arguments) {
   // testType2();
   // testType3();
   // testType4();
+  // testType5();
+  // testType6();
+  // testType7();
+  // testType09();
+  // testType12();
   // testMixedMixed();
 
   // testRead();

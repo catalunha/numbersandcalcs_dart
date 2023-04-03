@@ -31,9 +31,45 @@ class NumberQ {
   }) {
     setTypeOrigin();
     simplifyValues();
-    // decimalToFraction();
     setTypeReduced();
     calculeInDouble();
+  }
+
+  String fractionToDecimal() {
+    if (type != NumberQType.fraction) {
+      throw Exception('Precisa ser fração');
+    }
+
+    return '';
+  }
+
+  List<int> disassemble() {
+    if (type != NumberQType.integer) {
+      throw Exception('Operação permitida apenas com inteiros puros');
+    }
+    if (integer! > 999) {
+      throw Exception('O valor deve ser menor que 1000');
+    }
+    List<int> valueList =
+        integer.toString().split('').map((e) => int.parse(e)).toList();
+    // valueList.reversed;
+    List<int> potency = [1, 10, 100];
+    for (var i = 0; i < valueList.length; i++) {
+      valueList[i] = valueList[i] * potency[valueList.length - 1 - i];
+    }
+    valueList.sort();
+    return valueList;
+  }
+
+  static NumberQ assemble(List<int> disassembleNumber) {
+    int temp = 0;
+    for (var element in disassembleNumber) {
+      temp += element;
+    }
+    if (temp > 999) {
+      throw Exception('O valor deve ser menor que 1000');
+    }
+    return NumberQ(integer: temp);
   }
 
   static NumberQ? parse(String myNumberInString) {
@@ -58,8 +94,15 @@ class NumberQ {
           var partsDec = partUnic.split('.');
           int a = int.parse(partsDec[0]);
           String b = partsDec[1];
-          NumberQSignal signalTemp =
-              a >= 0 ? NumberQSignal.positive : NumberQSignal.negative;
+          NumberQSignal signalTemp = NumberQSignal.positive;
+          if (a == 0) {
+            if (partsDec[0][0] == '-') {
+              signalTemp = NumberQSignal.negative;
+            }
+          } else {
+            signalTemp =
+                a >= 0 ? NumberQSignal.positive : NumberQSignal.negative;
+          }
           myNumber = myNumber.copyWith(
             integer: a.abs(),
             decimal: b,
@@ -135,12 +178,19 @@ class NumberQ {
           _integerReduced == null) {
         _integerReduced = 0;
       }
-      if (_fractionNumReduced == _fractionDenReduced &&
-          _fractionNumReduced != null &&
-          _fractionDenReduced != null) {
-        _integerReduced = _integerReduced! + 1;
-        _fractionNumReduced = null;
-        _fractionDenReduced = null;
+      try {
+        if (_fractionNumReduced == _fractionDenReduced &&
+            _fractionNumReduced != null &&
+            _fractionDenReduced != null) {
+          _integerReduced = _integerReduced != null ? _integerReduced! + 1 : 1;
+          _fractionNumReduced = null;
+          _fractionDenReduced = null;
+        }
+      } catch (_) {
+        print('+++ Eeeeeerrrrrooooo');
+        print(this);
+        print('--- Eeeeeerrrrrooooo');
+        throw Exception('Erro 1');
       }
       //print('etapa4: ${toString()}');
     }
@@ -178,8 +228,15 @@ class NumberQ {
       }
     }
     if (typeReduced == NumberQType.decimal) {
-      _inDouble = (signalValue *
-          (_integerReduced! + _fractionNumReduced! / _fractionDenReduced!));
+      try {
+        _inDouble = (signalValue *
+            (_integerReduced! +
+                (_fractionNumReduced ?? 0) / (_fractionDenReduced ?? 1)));
+      } catch (_) {
+        print('+++ Erro');
+        print(this);
+        print('--- Erro');
+      }
     }
     if (typeReduced == NumberQType.fraction) {
       _inDouble = signalValue * _fractionNumReduced! / _fractionDenReduced!;
@@ -205,7 +262,8 @@ class NumberQ {
     } else if (integer == null &&
         decimal == null &&
         fractionNum != null &&
-        fractionDen != null) {
+        fractionDen != null &&
+        fractionDen != 0) {
       _type = NumberQType.fraction;
     } else if (integer != null &&
         decimal == null &&
@@ -213,7 +271,12 @@ class NumberQ {
         fractionDen != null &&
         fractionDen != 0) {
       _type = NumberQType.mixed;
+    } else if (integer == null &&
+        decimal == null &&
+        fractionNum == null &&
+        fractionDen == null) {
     } else {
+      print(this);
       throw Exception('Numero desconhecido.');
     }
   }
@@ -431,8 +494,10 @@ class NumberQ {
     if (type == NumberQType.decimal && num2.type == NumberQType.decimal) {
       var res1 = (integerReduced! + decimalReducedInt! / 1000);
       var res2 = (num2.integerReduced! + num2.decimalReducedInt! / 1000);
-      NumberQSignal signal = res1 > res2 ? this.signal : num2.signal;
-
+      NumberQSignal signal = NumberQSignal.positive;
+      // if ((res1 - res2) != 0.0) {
+      signal = res1 >= res2 ? this.signal : num2.signal;
+      // }
       int? integerTemp = signalValue * (integerReduced ?? 0) +
           num2.signalValue * (num2.integerReduced ?? 0);
 

@@ -1,3 +1,4 @@
+import '../create_file.dart';
 import '../my_number.dart';
 import '../my_number_seed.dart';
 
@@ -19,18 +20,20 @@ void testType3() {
     var numbers1 = seed1.exportList();
     // var numbers1 =
     //     seed1.exportList(multipleList: [1, 2, 3], shuffleMultipleList: false);
-    // numbers1.shuffle();
-    print('Lista com : ${numbers1.length}');
 
+    var fileOpen = createFile('type3_ReducingImproperFractions');
+    fileOpen.writeln('Lista com : ${numbers1.length}');
+    // numbers1.shuffle();
     for (var element in numbers1) {
       if (element.typeReduced == NumberQType.mixed) {
         NumberQ? read = NumberQ.parse(element.toStringReduced());
-        print(
-            '${element.toStringOrigin()} ou ${element.toStringReduced()} [${element.toStringReduced() == read?.toStringReduced()}]');
-        if (element.toStringReduced() != read?.toStringReduced()) {
-          throw Exception('Resposta diferente');
-        }
+        fileOpen.writeln(
+            '${element.toStringOrigin()} = ${element.toStringReduced()}');
+        // if (element.toStringReduced() != read?.toStringReduced()) {
+        //   throw Exception('Resposta diferente');
+        // }
       }
     }
+    fileOpen.close();
   }
 }

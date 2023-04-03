@@ -16,6 +16,11 @@ export 'package:numbersandcalcs_dart/my_number/test_types/test_type1.dart';
 export 'package:numbersandcalcs_dart/my_number/test_types/test_type2.dart';
 export 'package:numbersandcalcs_dart/my_number/test_types/test_type3.dart';
 export 'package:numbersandcalcs_dart/my_number/test_types/test_type4.dart';
+export 'package:numbersandcalcs_dart/my_number/test_types/test_type5.dart';
+export 'package:numbersandcalcs_dart/my_number/test_types/test_type6.dart';
+export 'package:numbersandcalcs_dart/my_number/test_types/test_type7.dart';
+export 'package:numbersandcalcs_dart/my_number/test_types/test_type09.dart';
+export 'package:numbersandcalcs_dart/my_number/test_types/test_type12.dart';
 
 export 'package:numbersandcalcs_dart/my_number/test_types/test_mixed_mixed.dart';
 
