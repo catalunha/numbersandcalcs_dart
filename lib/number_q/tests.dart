@@ -19,10 +19,14 @@ export 'package:numbersandcalcs_dart/number_q/test_types/test_type4.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_type5.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_type6.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_type7.dart';
+export 'package:numbersandcalcs_dart/number_q/test_types/test_type8.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_type09.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_type10.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_type11.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_type12.dart';
+export 'package:numbersandcalcs_dart/number_q/test_types/test_type13.dart';
+export 'package:numbersandcalcs_dart/number_q/test_types/test_type14.dart';
+export 'package:numbersandcalcs_dart/number_q/test_types/test_type15.dart';
 
 export 'package:numbersandcalcs_dart/number_q/test_types/test_mixed_mixed.dart';
 
