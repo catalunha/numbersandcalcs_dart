@@ -1,11 +1,11 @@
-import '../my_number.dart';
-import '../my_number_seed.dart';
+import '../number_q.dart';
+import '../number_q_seed.dart';
 
 void testIntegers() {
   print('testIntegers');
   bool seeDetails = false;
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.integer,
       signalList: [NumberQSignal.positive],
       integerList: [1, 2],
@@ -16,7 +16,7 @@ void testIntegers() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.integer,
       signalList: [NumberQSignal.negative],
       integerList: [3, 4],
@@ -27,7 +27,7 @@ void testIntegers() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.integer,
       signalList: [NumberQSignal.positive, NumberQSignal.negative],
       integerList: [5, 6],

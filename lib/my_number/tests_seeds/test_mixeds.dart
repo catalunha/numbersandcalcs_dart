@@ -1,11 +1,11 @@
-import '../my_number.dart';
-import '../my_number_seed.dart';
+import '../number_q.dart';
+import '../number_q_seed.dart';
 
 void testMixeds() {
   print('+++ testMixeds');
   bool seeDetails = false;
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.mixed,
       signalList: [NumberQSignal.positive],
       integerList: [1],
@@ -19,7 +19,7 @@ void testMixeds() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.mixed,
       signalList: [NumberQSignal.positive],
       integerList: [1],
@@ -33,7 +33,7 @@ void testMixeds() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.mixed,
       signalList: [NumberQSignal.positive],
       integerList: [1],

@@ -35,13 +35,31 @@ class NumberQ {
     calculeInDouble();
   }
 
-  String fractionToDecimal() {
-    if (type != NumberQType.fraction) {
-      throw Exception('Precisa ser fração');
+/*
+  NumberQ? fractionToDecimal() {
+    if (type != NumberQType.fraction||type != NumberQType.mixed) {
+      throw Exception('Numero precisa ser fração ou misto');
     }
-
-    return '';
+    String fractionDenReducedString = fractionDenReduced.toString();
+    int rest;
+    int fractionDenReducedLength = fractionDenReducedString.length;
+    if (fractionDenReducedString.length > 3) {
+      throw Exception('Numero precisa ter parte decimal menor que 1000');
+    }
+    rest = (fractionDenReducedLength * 10) % fractionDenReduced!;
+    if (rest == 0) {
+      int quotient = (fractionDenReducedLength * 10) ~/ fractionDenReduced!;
+      int integerNew = fractionNum! * quotient;
+      int fractionNumNew = fractionNum! * quotient;
+      int fractionDenNew = fractionDen! * quotient;
+      return NumberQ(
+          integer: 0,
+          decimal: fractionNumNew.toString().padLeft(fractionDenReducedLength, '0'));
+    } else {
+      return null;
+    }
   }
+  */
 
   List<int> disassemble() {
     if (type != NumberQType.integer) {
@@ -374,10 +392,11 @@ class NumberQ {
       myNumber += '$signalSymbol$integerReduced/1';
     }
     if (typeReduced == NumberQType.decimal) {
-      int num = (pow(10, _decimalPlaces!).toInt() *
-          _integerReduced! *
-          _decimalReducedInt!);
-      myNumber += '$signalSymbol$num/${pow(10, _decimalPlaces!).toInt()}';
+      // int num = (pow(10, _decimalPlaces!).toInt() *
+      //     _integerReduced! *
+      //     _decimalReducedInt!);
+      // myNumber += '$signalSymbol$num/${pow(10, _decimalPlaces!).toInt()}';
+      myNumber += '$signalSymbol$fractionNumReduced/$_fractionDenReduced';
     }
     if (typeReduced == NumberQType.fraction) {
       myNumber += '$signalSymbol$fractionNumReduced/$_fractionDenReduced';

@@ -1,11 +1,11 @@
-import '../my_number.dart';
-import '../my_number_seed.dart';
+import '../number_q.dart';
+import '../number_q_seed.dart';
 
 void testFractions() {
   print('testFractions');
   bool seeDetails = false;
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive],
       fractionNumList: [1],
@@ -18,7 +18,7 @@ void testFractions() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive],
       fractionNumList: [2],
@@ -31,7 +31,7 @@ void testFractions() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive],
       fractionNumList: [5],
@@ -44,7 +44,7 @@ void testFractions() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive],
       fractionNumList: [3, 4],
@@ -57,7 +57,7 @@ void testFractions() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive],
       fractionNumList: [3, 4],
@@ -70,7 +70,7 @@ void testFractions() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive],
       fractionNumList: [3, 4],

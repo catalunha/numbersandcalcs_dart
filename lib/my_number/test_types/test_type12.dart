@@ -1,12 +1,12 @@
 import '../create_file.dart';
-import '../my_number.dart';
-import '../my_number_seed.dart';
+import '../number_q.dart';
+import '../number_q_seed.dart';
 
 void testType12() {
   print('testType12');
   bool seeDetails = false;
   {
-    MyNumberSeed seed1 = MyNumberSeed(
+    NumberQSeed seed1 = NumberQSeed(
       type: NumberQType.integer,
       // signalList: [NumberQSignal.positive],
       // // signalList: [NumberQSignal.negative],
@@ -23,7 +23,7 @@ void testType12() {
     //   print(element.toStringReduced());
     // }
 
-    MyNumberSeed seed2 = MyNumberSeed(
+    NumberQSeed seed2 = NumberQSeed(
       type: NumberQType.mixed,
       // signalList: [NumberQSignal.positive],
       // // signalList: [NumberQSignal.negative],

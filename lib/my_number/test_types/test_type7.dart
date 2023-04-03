@@ -1,12 +1,12 @@
 import '../create_file.dart';
-import '../my_number.dart';
-import '../my_number_seed.dart';
+import '../number_q.dart';
+import '../number_q_seed.dart';
 
 void testType7() {
   print('testType7');
   bool seeDetails = false;
   {
-    MyNumberSeed seed1 = MyNumberSeed(
+    NumberQSeed seed1 = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive, NumberQSignal.negative],
       fractionNumList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -19,7 +19,7 @@ void testType7() {
     //   print(element.toStringReduced());
     // }
 
-    MyNumberSeed seed2 = MyNumberSeed(
+    NumberQSeed seed2 = NumberQSeed(
       type: NumberQType.fraction,
       signalList: [NumberQSignal.positive, NumberQSignal.negative],
       fractionNumList: [1, 2, 3, 4, 5, 6, 7, 8, 9],

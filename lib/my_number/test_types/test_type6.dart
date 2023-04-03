@@ -1,5 +1,5 @@
 import '../create_file.dart';
-import '../my_number.dart';
+import '../number_q.dart';
 
 void testType6() {
   print('testType6');

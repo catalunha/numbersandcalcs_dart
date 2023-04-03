@@ -1,22 +1,54 @@
-import 'my_number.dart';
+import 'number_q.dart';
 
-class MyNumberSeed {
+// enum NumberQType { integer, decimal, fraction, mixed, percent }
+
+class NumberQSeed {
   final NumberQType? type;
   final List<NumberQSignal>? signalList;
   final List<int>? integerList;
   final List<String>? decimaList;
   final List<int>? fractionNumList;
   final List<int>? fractionDenList;
-  MyNumberSeed({
+  final List<int>? percentList;
+  NumberQSeed({
     required this.type,
     this.signalList,
     this.integerList,
     this.decimaList,
     this.fractionNumList,
     this.fractionDenList,
+    this.percentList,
   }) {
     checkData();
   }
+
+  // List<NumberQ> exportPercentAsFraction() {
+  //   List<NumberQ> myNumberList = [];
+  //   for (var percent in percentList!) {
+  //     if (percent < 1 || percent > 99) {
+  //       throw Exception('Valor de porcentagem deve ficar entre 1 e 99');
+  //     }
+  //     myNumberList.add(NumberQ(
+  //       fractionNum: percent,
+  //       fractionDen: 100,
+  //     ));
+  //   }
+  //   return myNumberList;
+  // }
+
+  // List<NumberQ> exportPercentAsDecimal() {
+  //   List<NumberQ> myNumberList = [];
+  //   for (var percent in percentList!) {
+  //     if (percent < 1 || percent > 99) {
+  //       throw Exception('Valor de porcentagem deve ficar entre 1 e 99');
+  //     }
+  //     myNumberList.add(NumberQ(
+  //       integer: 0,
+  //       decimal: percent.toString().padLeft(3, '0'),
+  //     ));
+  //   }
+  //   return myNumberList;
+  // }
 
   List<NumberQ> exportList(
       {List<int> multipleList = const [1], bool shuffleMultipleList = false}) {

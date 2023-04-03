@@ -1,11 +1,11 @@
-import '../my_number.dart';
-import '../my_number_seed.dart';
+import '../number_q.dart';
+import '../number_q_seed.dart';
 
 void testDecimals() {
   print('+++ testDecimals');
   bool seeDetails = false;
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.decimal,
       signalList: [NumberQSignal.positive],
       integerList: [1],
@@ -18,7 +18,7 @@ void testDecimals() {
     }
   }
   {
-    MyNumberSeed seed = MyNumberSeed(
+    NumberQSeed seed = NumberQSeed(
       type: NumberQType.decimal,
       signalList: [NumberQSignal.positive],
       integerList: [1],

@@ -1,11 +1,11 @@
-import '../my_number.dart';
-import '../my_number_seed.dart';
+import '../number_q.dart';
+import '../number_q_seed.dart';
 
 void testMixedMixed() {
   print('testMixedMixed');
   bool seeDetails = false;
   {
-    MyNumberSeed seed1 = MyNumberSeed(
+    NumberQSeed seed1 = NumberQSeed(
       type: NumberQType.mixed,
       signalList: [NumberQSignal.positive],
       integerList: [1],
@@ -17,7 +17,7 @@ void testMixedMixed() {
     for (var element in numbers1) {
       print(element.toStringReduced());
     }
-    MyNumberSeed seed2 = MyNumberSeed(
+    NumberQSeed seed2 = NumberQSeed(
       type: NumberQType.mixed,
       signalList: [NumberQSignal.positive],
       integerList: [1],

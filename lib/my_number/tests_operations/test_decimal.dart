@@ -1,4 +1,4 @@
-import '../my_number.dart';
+import '../number_q.dart';
 
 void testDecimal() {
   print('testDecimal');

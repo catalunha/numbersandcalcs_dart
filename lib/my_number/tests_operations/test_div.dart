@@ -1,4 +1,4 @@
-import 'package:numbersandcalcs_dart/my_number/my_number.dart';
+import 'package:numbersandcalcs_dart/my_number/number_q.dart';
 
 void testDiv() {
   print('testDiv');
