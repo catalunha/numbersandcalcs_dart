@@ -29,9 +29,10 @@ class NumberQ {
     this.fractionNum,
     this.fractionDen,
   }) {
+    setTypeOrigin();
     simplifyValues();
     // decimalToFraction();
-    setType();
+    setTypeReduced();
     calculeInDouble();
   }
 
@@ -137,7 +138,7 @@ class NumberQ {
       if (_fractionNumReduced == _fractionDenReduced &&
           _fractionNumReduced != null &&
           _fractionDenReduced != null) {
-        _integerReduced = 1;
+        _integerReduced = _integerReduced! + 1;
         _fractionNumReduced = null;
         _fractionDenReduced = null;
       }
@@ -189,17 +190,35 @@ class NumberQ {
     }
   }
 
-  void setType() {
+  void setTypeOrigin() {
     //original
-    if (decimal == null && fractionNum == null && fractionDen == null) {
+    if (integer != null &&
+        decimal == null &&
+        fractionNum == null &&
+        fractionDen == null) {
       _type = NumberQType.integer;
-    } else if (fractionNum == null && fractionDen == null) {
+    } else if (integer != null &&
+        decimal != null &&
+        fractionNum == null &&
+        fractionDen == null) {
       _type = NumberQType.decimal;
-    } else if (integer == null && fractionNum != null && fractionDen != null) {
+    } else if (integer == null &&
+        decimal == null &&
+        fractionNum != null &&
+        fractionDen != null) {
       _type = NumberQType.fraction;
-    } else {
+    } else if (integer != null &&
+        decimal == null &&
+        fractionNum != null &&
+        fractionDen != null &&
+        fractionDen != 0) {
       _type = NumberQType.mixed;
+    } else {
+      throw Exception('Numero desconhecido.');
     }
+  }
+
+  void setTypeReduced() {
     //reduced
     if (_decimalReduced == null &&
         _fractionNumReduced == null &&

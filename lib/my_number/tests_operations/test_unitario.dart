@@ -5,7 +5,7 @@ void testUnitario() {
   {
     NumberQ num1 = NumberQ(
       signal: NumberQSignal.positive,
-      // integer: 1,
+      integer: 1,
       fractionNum: 0,
       fractionDen: 1,
     );
