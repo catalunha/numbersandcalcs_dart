@@ -1,4 +1,4 @@
-import 'package:numbersandcalcs_dart/my_number/tests.dart';
+import 'package:numbersandcalcs_dart/number_q/tests.dart';
 
 void main(List<String> arguments) {
   // testGCFandLCM();

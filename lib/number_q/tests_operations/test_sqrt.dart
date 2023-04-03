@@ -1,4 +1,4 @@
-import 'package:numbersandcalcs_dart/my_number/number_q.dart';
+import 'package:numbersandcalcs_dart/number_q/number_q.dart';
 
 void testSqrt() {
   print('testSqrt');

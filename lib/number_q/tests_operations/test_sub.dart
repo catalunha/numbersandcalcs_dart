@@ -1,8 +1,9 @@
-import 'package:numbersandcalcs_dart/my_number/number_q.dart';
+import 'package:numbersandcalcs_dart/number_q/number_q.dart';
 
-void testSum() {
-  print('testSum');
+void testSub() {
+  print('testSub');
   bool seeDetails = false;
+
   {
     NumberQ num1 = NumberQ(
       signal: NumberQSignal.positive,
@@ -12,17 +13,17 @@ void testSum() {
       signal: NumberQSignal.positive,
       integer: 3,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.integerReduced == 5);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.negative);
+    assert(sub.integerReduced == 1);
   }
   {
     NumberQ num1 = NumberQ(
@@ -33,16 +34,17 @@ void testSum() {
       signal: NumberQSignal.positive,
       integer: 3,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
+
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.integerReduced == 1);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.negative);
+    assert(sub.integerReduced == 5);
   }
   {
     NumberQ num1 = NumberQ(
@@ -53,17 +55,17 @@ void testSum() {
       signal: NumberQSignal.negative,
       integer: 3,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.negative);
-    assert(sum.integerReduced == 1);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.positive);
+    assert(sub.integerReduced == 5);
   }
   {
     NumberQ num1 = NumberQ(
@@ -76,19 +78,18 @@ void testSum() {
       fractionNum: 3,
       fractionDen: 4,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.integerReduced == 1);
-    assert(sum.fractionNumReduced == 1);
-    assert(sum.fractionDenReduced == 4);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.negative);
+    assert(sub.fractionNumReduced == 1);
+    assert(sub.fractionDenReduced == 4);
   }
   {
     NumberQ num1 = NumberQ(
@@ -101,18 +102,19 @@ void testSum() {
       fractionNum: 3,
       fractionDen: 4,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.fractionNumReduced == 1);
-    assert(sum.fractionDenReduced == 4);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.negative);
+    assert(sub.integerReduced == 1);
+    assert(sub.fractionNumReduced == 1);
+    assert(sub.fractionDenReduced == 4);
   }
   {
     NumberQ num1 = NumberQ(
@@ -125,19 +127,21 @@ void testSum() {
       fractionNum: 3,
       fractionDen: 4,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.negative);
-    assert(sum.fractionNumReduced == 1);
-    assert(sum.fractionDenReduced == 4);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.positive);
+    assert(sub.integerReduced == 1);
+    assert(sub.fractionNumReduced == 1);
+    assert(sub.fractionDenReduced == 4);
   }
+
   {
     NumberQ num1 = NumberQ(
       signal: NumberQSignal.positive,
@@ -149,20 +153,21 @@ void testSum() {
       signal: NumberQSignal.positive,
       integer: 4,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.integerReduced == 5);
-    assert(sum.fractionNumReduced == 2);
-    assert(sum.fractionDenReduced == 3);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.negative);
+    assert(sub.integerReduced == 2);
+    assert(sub.fractionNumReduced == 1);
+    assert(sub.fractionDenReduced == 3);
   }
+
   {
     NumberQ num1 = NumberQ(
       signal: NumberQSignal.positive,
@@ -174,19 +179,19 @@ void testSum() {
       fractionNum: 2,
       fractionDen: 3,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.integerReduced == 5);
-    assert(sum.fractionNumReduced == 2);
-    assert(sum.fractionDenReduced == 3);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.positive);
+    assert(sub.integerReduced == 2);
+    assert(sub.fractionNumReduced == 1);
+    assert(sub.fractionDenReduced == 3);
   }
   {
     NumberQ num1 = NumberQ(
@@ -201,19 +206,19 @@ void testSum() {
       fractionNum: 5,
       fractionDen: 6,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.integerReduced == 6);
-    assert(sum.fractionNumReduced == 1);
-    assert(sum.fractionDenReduced == 2);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.negative);
+    assert(sub.integerReduced == 3);
+    assert(sub.fractionNumReduced == 1);
+    assert(sub.fractionDenReduced == 6);
   }
   {
     NumberQ num1 = NumberQ(
@@ -228,18 +233,18 @@ void testSum() {
       fractionNum: 6,
       fractionDen: 9,
     );
-    NumberQ sum = num1 + num2;
+    NumberQ sub = num1 - num2;
     if (seeDetails) {
       print(num1);
       print(num2);
-      print(sum);
+      print(sub);
     }
 
     print(
-        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sum: ${sum.toStringReduced()}');
-    assert(sum.signal == NumberQSignal.positive);
-    assert(sum.integerReduced == 6);
-    assert(sum.fractionNumReduced == 1);
-    assert(sum.fractionDenReduced == 6);
+        'num1: ${num1.toStringReduced()} num2: ${num2.toStringReduced()} sub: ${sub.toStringReduced()}');
+    assert(sub.signal == NumberQSignal.negative);
+    assert(sub.integerReduced == 1);
+    assert(sub.fractionNumReduced == 1);
+    assert(sub.fractionDenReduced == 6);
   }
 }
