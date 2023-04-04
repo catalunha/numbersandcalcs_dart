@@ -2,7 +2,7 @@ import 'package:numbersandcalcs_dart/number_q/tests.dart';
 
 void main(List<String> arguments) {
   // testGCFandLCM();
-  // testUnitario();
+  testUnitario();
   // testSum();
   // testSub();
   // testMul();
@@ -32,7 +32,7 @@ void main(List<String> arguments) {
   // testType12();
   // testType13();
   // testType14();
-  testType15();
+  // testType15();
   // testMixedMixed();
 
   // testRead();

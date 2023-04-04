@@ -34,32 +34,15 @@ class NumberQ {
     setTypeReduced();
     calculeInDouble();
   }
-
-/*
-  NumberQ? fractionToDecimal() {
-    if (type != NumberQType.fraction||type != NumberQType.mixed) {
-      throw Exception('Numero precisa ser fração ou misto');
+  bool isEqualsThe(NumberQ num2) {
+    if (type != num2.type) {
+      return false;
     }
-    String fractionDenReducedString = fractionDenReduced.toString();
-    int rest;
-    int fractionDenReducedLength = fractionDenReducedString.length;
-    if (fractionDenReducedString.length > 3) {
-      throw Exception('Numero precisa ter parte decimal menor que 1000');
+    if (toStringReduced() != num2.toStringReduced()) {
+      return false;
     }
-    rest = (fractionDenReducedLength * 10) % fractionDenReduced!;
-    if (rest == 0) {
-      int quotient = (fractionDenReducedLength * 10) ~/ fractionDenReduced!;
-      int integerNew = fractionNum! * quotient;
-      int fractionNumNew = fractionNum! * quotient;
-      int fractionDenNew = fractionDen! * quotient;
-      return NumberQ(
-          integer: 0,
-          decimal: fractionNumNew.toString().padLeft(fractionDenReducedLength, '0'));
-    } else {
-      return null;
-    }
+    return true;
   }
-  */
 
   List<int> disassemble() {
     if (type != NumberQType.integer) {
