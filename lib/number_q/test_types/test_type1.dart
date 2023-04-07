@@ -8,33 +8,17 @@ void testType1() {
   {
     NumberQSeed seed1 = NumberQSeed(
       type: NumberQType.integer,
-      // signalList: [NumberQSignal.positive],
-      // // signalList: [NumberQSignal.negative],
       signalList: [NumberQSignal.positive, NumberQSignal.negative],
-      // integerList: [1, 2],
       integerList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     );
-    // print('seed1: $seed1');
     var numbers1 = seed1.exportList();
-    // numbers1.shuffle();
-    // for (var element in numbers1) {
-    //   print(element.toStringReduced());
-    // }
 
     NumberQSeed seed2 = NumberQSeed(
       type: NumberQType.integer,
-      // signalList: [NumberQSignal.positive],
-      // // signalList: [NumberQSignal.negative],
       signalList: [NumberQSignal.positive, NumberQSignal.negative],
-      // integerList: [3, 4],
       integerList: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     );
-    // print('seed2: $seed2');
     var numbers2 = seed2.exportList();
-    // numbers2.shuffle();
-    // for (var element in numbers2) {
-    //   print(element.toStringReduced());
-    // }
 
     var number1SumNumber2 = [];
     var number1SubNumber2 = [];
