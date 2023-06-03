@@ -1,8 +1,8 @@
-import 'package:numbersandcalcs_dart/number_q/tests.dart';
+import 'package:numbersandcalcs_dart/number_q/exports.dart';
 
 void main(List<String> arguments) {
   // testGCFandLCM();
-  testUnitario();
+  // testUnitario();
   // testSum();
   // testSub();
   // testMul();
@@ -36,4 +36,6 @@ void main(List<String> arguments) {
   // testMixedMixed();
 
   // testRead();
+
+  testJson();
 }

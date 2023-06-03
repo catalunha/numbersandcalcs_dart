@@ -31,3 +31,5 @@ export 'package:numbersandcalcs_dart/number_q/test_types/test_type15.dart';
 export 'package:numbersandcalcs_dart/number_q/test_types/test_mixed_mixed.dart';
 
 export 'package:numbersandcalcs_dart/number_q/test_read/test_read.dart';
+
+export 'package:numbersandcalcs_dart/number_q/tests_operations/test_json.dart';

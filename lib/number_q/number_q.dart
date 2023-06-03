@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import '../gcf_lcm/alg_gcf_lcm.dart';
@@ -22,7 +23,6 @@ class NumberQ {
   NumberQType? _typeReduced;
   double? _inDouble;
   NumberQ({
-    // this.type = MyNumberType.integer,
     this.signal = NumberQSignal.positive,
     this.integer,
     this.decimal,
@@ -34,6 +34,7 @@ class NumberQ {
     setTypeReduced();
     calculeInDouble();
   }
+
   bool isEqualsThe(NumberQ num2) {
     if (type != num2.type) {
       return false;
@@ -418,6 +419,43 @@ class NumberQ {
     }
     return myNumber;
   }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    result.addAll({'signal': signal == NumberQSignal.positive ? '+' : '-'});
+    if (integer != null) {
+      result.addAll({'integer': integer});
+    }
+    if (fractionNum != null) {
+      result.addAll({'fractionNum': fractionNum});
+    }
+    if (fractionDen != null) {
+      result.addAll({'fractionDen': fractionDen});
+    }
+    if (decimal != null) {
+      result.addAll({'decimal': decimal});
+    }
+
+    return result;
+  }
+
+  factory NumberQ.fromMap(Map<String, dynamic> map) {
+    return NumberQ(
+      signal: map['signal'] == '+'
+          ? NumberQSignal.positive
+          : NumberQSignal.negative,
+      integer: map['integer']?.toInt(),
+      fractionNum: map['fractionNum']?.toInt(),
+      fractionDen: map['fractionDen']?.toInt(),
+      decimal: map['decimal'],
+    );
+  }
+
+  String toJson() => json.encode(toMap());
+
+  factory NumberQ.fromJson(String source) =>
+      NumberQ.fromMap(json.decode(source));
 
   NumberQ copyWith({
     NumberQSignal? signal,

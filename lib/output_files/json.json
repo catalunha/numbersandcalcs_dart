@@ -1,0 +1,15 @@
+{
+  "num1": {
+    "signal": "+",
+    "integer": 3
+  },
+  "num2": {
+    "signal": "+",
+    "integer": 2
+  },
+  "operator": "sub",
+  "ans": {
+    "signal": "+",
+    "integer": 5
+  }
+}
