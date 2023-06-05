@@ -1,5 +1,4 @@
 import '../number_q.dart';
-import '../type01.dart';
 
 void testJson() {
   print('+++ Testando Import e Export com JSON');
@@ -12,16 +11,31 @@ void testJson() {
     integer: 2,
   );
   print(num1.toJson());
-  print(num2.toJson());
-  print(Type1(
-          num1: num1, num2: num2, operator: Type1Operator.sum, ans: num1 + num2)
-      .toJson());
-  print(Type1(
-          num1: num1,
-          num2: num2,
-          operator: Type1Operator.subtraction,
-          ans: num1 - num2)
-      .toJson());
+  print(num1.toString());
+  print(num1.toStringFraction());
+  print(num1.toStringOrigin());
+  print(num1.toStringReduced());
+  // print(Type1(
+  //         num1: num1, num2: num2, operator: Type1Operator.sum, ans: num1 + num2)
+  //     .toJson());
+  // print(Type1(
+  //         num1: num1,
+  //         num2: num2,
+  //         operator: Type1Operator.subtraction,
+  //         ans: num1 - num2)
+  //     .toJson());
+  // print(Type1(
+  //         num1: num1,
+  //         num2: num2,
+  //         operator: Type1Operator.multiply,
+  //         ans: num1 * num2)
+  //     .toJson());
+  // print(Type1(
+  //         num1: num1,
+  //         num2: num2,
+  //         operator: Type1Operator.division,
+  //         ans: num1 / num2)
+  //     .toJson());
 
   // print(type2.toJson());
 
